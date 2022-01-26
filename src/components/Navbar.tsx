@@ -1,4 +1,5 @@
 import React, {FC} from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png'
 import defaultProfile from '../assets/default-user.png'
 
@@ -8,7 +9,9 @@ export const Navbar:FC = (props) => {
     <div className=' w-full flex justify-between h-16 items-center mt-1 max-w-7xl px-10 m-auto'>
     
     <section>
-        <img src={logo} alt='logo' className='w-[100px] h-[65px] object-contain cursor-pointer'/>
+        <Link to='/'>
+            <img src={logo} alt='logo' className='w-[100px] h-[65px] object-contain cursor-pointer'/>
+        </Link>
     </section>
 
     {/* <section className='w-[300px]'>
