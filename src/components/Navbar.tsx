@@ -1,0 +1,29 @@
+import React, {FC} from 'react';
+import logo from '../assets/logo.png'
+import defaultProfile from '../assets/default-user.png'
+
+
+export const Navbar:FC = (props) => {
+  return (
+    <div className=' w-full flex justify-between h-16 items-center mt-1 max-w-7xl px-10'>
+    
+    <section>
+        <img src={logo} alt='logo' className='w-[100px] h-[65px] object-contain'/>
+    </section>
+
+    {/* <section className='w-[300px]'>
+        <ul className='flex justify-between font-medium'>
+            <li>HOME</li>
+            <li>PROFILE</li>
+            <li>CART</li>
+        </ul>
+    </section> */}
+
+    <section className='flex justify-around w-[300px] items-center'>
+        <img src={defaultProfile} alt='profile'className='w-[35px] h-[35px] object-contain cursor-pointer'/>
+        <p className=' font-medium cursor-pointer'>John Doe</p>
+        <button className='px-3 py-1.5 bg-blue-400 rounded-md text-white text-sm font-medium'>Sign Up</button>
+    </section>
+    
+    </div>
+)};
