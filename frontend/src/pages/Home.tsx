@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Card from '../components/Card';
+import { Spinner } from '../components/Spinner/Spinner';
 
 type Props = {};
 
@@ -32,8 +33,11 @@ export const Home = (props: Props) => {
       {/* carousel */}
       {/* Search */}
     
-    <div className=''>
-        <Card data={data}/>
+    <div>
+      {data.length > 0 ? 
+        <Card data={data}/> :
+        <Spinner />
+      }
     </div>
   </div>;
 };

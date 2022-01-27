@@ -1,13 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import products from '../products';
 import star from '../assets/star.png';
-import { Spinner } from './Spinner/Spinner';
-
-
 
 interface Props {
-
+    
     data: any[]
 };
 
@@ -15,7 +11,7 @@ const Card = (props: Props) => {
   // eslint-disable-next-line no-lone-blocks
   return (
   <div className='grid grid-cols-5 gap-4 '>
-      {props.data ? props.data.map(product =>  
+      {props.data.length > 0 ? props.data.map(product =>  
           (
               <div className=' text-sm cursor-pointer' key={product._id}>
                   <Link to={`/product/${product._id}`}>
@@ -34,7 +30,7 @@ const Card = (props: Props) => {
                   </Link>
               </div>
           )
-      ) : <Spinner />}
+      ) : null}
   </div>
   )
 };
