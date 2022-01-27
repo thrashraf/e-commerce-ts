@@ -6,13 +6,16 @@ import { Spinner } from './Spinner/Spinner';
 
 
 
-type Props = {};
+interface Props {
+
+    data: any[]
+};
 
 const Card = (props: Props) => {
   // eslint-disable-next-line no-lone-blocks
   return (
   <div className='grid grid-cols-5 gap-4 '>
-      {products ? products.map(product =>  
+      {props.data ? props.data.map(product =>  
           (
               <div className=' text-sm cursor-pointer' key={product._id}>
                   <Link to={`/product/${product._id}`}>
