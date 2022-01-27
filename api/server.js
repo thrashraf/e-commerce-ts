@@ -1,7 +1,11 @@
 const express = require('express');
-const app = express()
-const products = require('./data/products')
+require('dotenv').config()
+const port = process.env.port || 5000;
 const cors = require('cors');
+const products = require('./data/products')
+
+const app = express()
+
 
 app.use(cors({
     origin: '*'
@@ -17,4 +21,4 @@ app.get('/product/:id', (req, res) => {
 })
 
 
-app.listen(5000, console.log('server running'))
+app.listen(port, console.log(`server running on port ${port}`))
