@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import products from '../products';
 import star from '../assets/star.png';
+import { Spinner } from './Spinner/Spinner';
 
 
 
@@ -11,7 +12,7 @@ const Card = (props: Props) => {
   // eslint-disable-next-line no-lone-blocks
   return (
   <div className='grid grid-cols-5 gap-4 '>
-      {products.map(product =>  
+      {products ? products.map(product =>  
           (
               <div className=' text-sm cursor-pointer' key={product._id}>
                   <Link to={`/product/${product._id}`}>
@@ -30,7 +31,7 @@ const Card = (props: Props) => {
                   </Link>
               </div>
           )
-      )}
+      ) : <Spinner />}
   </div>
   )
 };

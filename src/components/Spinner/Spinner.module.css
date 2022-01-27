@@ -1,0 +1,31 @@
+@-webkit-keyframes spin {
+    to {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg); } }
+  
+  @keyframes spin {
+    to {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg); } }
+
+
+.halfRing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+.halfRing:before {
+    -webkit-animation: spin 1s infinite linear;
+            animation: spin 1s infinite linear;
+    border-radius: 10px;
+    -webkit-box-shadow: 25px 0px 0 0 rgba(0, 102, 204), 20.22542px 14.69463px 0 0 rgba(0, 108, 255), 7.72542px 23.77641px 0 0 rgba(51, 153, 255), -7.72542px 23.77641px 0 0 rgba(102, 178, 255), -20.22542px 14.69463px 0 0 #99CCFF;
+            box-shadow: 25px 0px 0 0 rgba(0, 102, 204), 20.22542px 14.69463px 0 0 rgba(0, 108, 255), 7.72542px 23.77641px 0 0 rgba(51, 153, 255), -7.72542px 23.77641px 0 0 rgba(102, 178, 255), -20.22542px 14.69463px 0 0 #99CCFF;
+    height: 10px;
+    width: 10px;
+    display: block;
+    content: ''; 
+
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import products from '../products';
 import star from '../assets/star.png'
+import { Spinner } from '../components/Spinner/Spinner';
 
 type Props = {};
 
@@ -89,7 +90,7 @@ const Product = (props: Props) => {
         </section>
     </div>)
 
-    : null
+    : <Spinner />
 };
 
 export default Product;
