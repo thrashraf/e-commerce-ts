@@ -12,11 +12,11 @@ export const Home = (props: Props) => {
   useEffect(() => {
 
     const fetchProducts = async () => {
-      axios.get('http://localhost:5000/product')
+      await axios.get('http://localhost:5000/product')
       .then(res => {
 
-        const data = res.data;
-        setData(data)
+        const productsData = res.data;
+        setData(productsData)
       })
       .catch(err => console.log(err))
     }
@@ -25,9 +25,9 @@ export const Home = (props: Props) => {
 
   }, [])
 
+  console.log(data);
 
-
-  return <div className=' max-w-7xl px-10'>
+  return <div className=' max-w-7xl px-10 m-auto'>
     
 
       {/* carousel */}
