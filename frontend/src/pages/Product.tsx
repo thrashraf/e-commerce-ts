@@ -68,8 +68,8 @@ const Product = (props: Props) => {
             </section>
 
             <section className=' max-w-[300px] flex justify-between mb-10'>
-                <button className='px-6 py-2 rounded-md bg-gray-500 text-white hover:bg-gray-400'>Add To Cart</button>
-                <button className='px-8 py-2 rounded-md text-white font-medium bg-blue-500 hover:bg-blue-400'>Buy Now</button>                
+                <button className='px-6 py-2 rounded-md bg-gray-500 text-white hover:bg-gray-400 focus:outline-none'>Add To Cart</button>
+                <button className='px-8 py-2 rounded-md text-white font-medium bg-blue-500 hover:bg-blue-400 focus:outline-none'>Buy Now</button>                
             </section>
 
             <section className='mt-16'>
