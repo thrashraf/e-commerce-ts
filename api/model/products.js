@@ -11,8 +11,16 @@ class products {
 
     }
 
-    static async getAllProducts() {
+    static getAllProducts() {
         const sql = "SELECT * FROM products"
+
+        return db.execute(sql);
+         
+    }
+
+    static getProductById(id) {
+
+        const sql = `SELECT * FROM products WHERE id = ${id}`
 
         return db.execute(sql);
          
