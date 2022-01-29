@@ -8,5 +8,10 @@ export const getAllProducts = async (req, res, next) => {
 
 
 export const getProductsById = async (req, res, next) => {
-    res.send("products by id")
+
+    const id = req.params.id
+
+    const [productById] = await products.getProductById(id)
+    console.log(productById);
+    res.status(200).json({productById});
 }
