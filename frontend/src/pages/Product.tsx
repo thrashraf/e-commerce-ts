@@ -15,10 +15,11 @@ const Product = (props: Props) => {
 
         const fetchSingleProduct = async () => {
 
-            await axios.get(`http://localhost:5000/product/${id}`)
+            await axios.get(`http://localhost:5000/api/product/${id}`)
             .then(res => {
 
-                const prod = res.data
+                const prod = res.data.productById[0]
+                // console.log(res.data.productById);
                 setDataProduct(prod)
             })
             .catch(err => console.log(err))

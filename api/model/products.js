@@ -19,7 +19,6 @@ class products {
     }
 
     static getProductById(id) {
-
         const sql = `SELECT * FROM products WHERE id = ${id}`
 
         return db.execute(sql);

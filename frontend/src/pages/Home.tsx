@@ -12,10 +12,11 @@ export const Home = (props: Props) => {
   useEffect(() => {
 
     const fetchProducts = async () => {
-      await axios.get('http://localhost:5000/product')
+      await axios.get('http://localhost:5000/api/product')
       .then(res => {
 
-        const productsData = res.data;
+        const productsData = res.data.allProducts;
+        console.log(res.data.allProducts);
         setData(productsData)
       })
       .catch(err => console.log(err))

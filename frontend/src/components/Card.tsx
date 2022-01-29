@@ -13,8 +13,8 @@ const Card = (props: Props) => {
   <div className='grid grid-cols-5 gap-4 '>
       {props.data.length > 0 ? props.data.map(product =>  
           (
-              <div className=' text-sm cursor-pointer' key={product._id}>
-                  <Link to={`/product/${product._id}`}>
+              <div className=' text-sm cursor-pointer' key={product.id}>
+                  <Link to={`/product/${product.id}`}>
                     <img src={product.image} alt='' />
                     <section className='px-1 mt-5'>
                     <h1 >{product.name.length > 30 ? product.name.slice(0, 31) + '...' : product.name}</h1>
