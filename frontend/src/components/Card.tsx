@@ -22,8 +22,8 @@ const Card = (props: Props) => {
                     <aside className='flex justify-between mt-5'>
                         <p className='text-gray-500'>${product.price}</p>
                         <section className='flex'>
-                            <p className='text-gray-500 mr-1'>{product.rating}</p>
-                            <img src={star} alt='rating' className='w-4 h-4 '/>
+                            <p className='text-gray-500 mr-1'>{product.sold} Sold</p>
+                            {/* <img src={star} alt='rating' className='w-4 h-4 '/> */}
                         </section>
                     </aside>
                     </section>
