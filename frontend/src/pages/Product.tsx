@@ -1,62 +1,54 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector, RootStateOrAny} from 'react-redux';
+import { listProductById } from '../actions/productDetailActions'
 import star from '../assets/star.png'
 import { Spinner } from '../components/Spinner/Spinner';
-import axios from 'axios';
+import { useParams } from "react-router-dom";
 
 type Props = {};
 
 const Product = (props: Props) => {
 
     const { id } = useParams()
-    const [dataProduct, setDataProduct] = useState<any>()
+    const dispatch = useDispatch();
+    const productByIdList = useSelector((state: RootStateOrAny) => state.productDetailReducers);
+    const { loading, productById, error } = productByIdList;
+
 
     useEffect(() => {
 
-        const fetchSingleProduct = async () => {
-
-            await axios.get(`http://localhost:5000/api/product/${id}`)
-            .then(res => {
-
-                const prod = res.data.productById[0]
-                // console.log(res.data.productById);
-                setDataProduct(prod)
-            })
-            .catch(err => console.log(err))
-        }
+        dispatch(listProductById(id))
         
-        fetchSingleProduct()
-        
-    }, [id])
+    }, [dispatch, id])
 
     
 
-    return dataProduct ? 
+    return productById.length !== 0 ? 
     (<div className='grid grid-cols-2 max-w-7xl m-auto px-10 gap-20 my-10'>
-        {console.log(dataProduct)}
+        {console.log(productById)}
         <section>
-            <img src={dataProduct.image} alt='product' className='rounded-lg'/>
+            <img src={productById.image} alt='product' className='rounded-lg'/>
         </section>
 
         <section>
-            <h1 className='text-2xl'>{dataProduct.name}</h1>
+            <h1 className='text-2xl'>{productById.name}</h1>
 
             <section className='flex justify-between w-[200px] mt-2 text-gray-500 text-md'>
                 <aside className='flex items-center'>
-                    <p className='text-gray-500 mr-1'>{dataProduct.rating}</p>
+                    <p className='text-gray-500 mr-1'>{productById.rating}</p>
                     <img src={star} alt='rating' className='w-4 h-4 '/>
                 </aside>
 
                 <aside>
-                    <p>Ratings {dataProduct.numReviews}</p>
+                    <p>Ratings {productById.numReviews}</p>
                 </aside>
 
                 <aside>
-                    <p>{dataProduct.numReviews} Sold</p>
+                    <p>{productById.numReviews} Sold</p>
                 </aside>
             </section>
 
-            <h3 className='text-3xl font-medium my-10'>${dataProduct.price}</h3>
+            <h3 className='text-3xl font-medium my-10'>${productById.price}</h3>
 
             <section className='w-[200px] flex justify-between mb-10'>
                 <p>Quantity</p>
@@ -91,16 +83,16 @@ const Product = (props: Props) => {
                     </aside>
 
                     <aside>
-                        <p>{dataProduct.category}</p>
-                        <p>{dataProduct.countInStock}</p>
-                        <p>{dataProduct.brand}</p>
+                        <p>{productById.category}</p>
+                        <p>{productById.countInStock}</p>
+                        <p>{productById.brand}</p>
                     </aside>
                 </section>
             </section>
 
             <section className='mt-10 max-w-md '>
                 <h3 className='text-lg'>Product Description</h3>
-                <p className='text-gray-500 text-sm mt-5 leading-7 '>{dataProduct.description}</p>
+                <p className='text-gray-500 text-sm mt-5 leading-7 '>{productById.description}</p>
             </section>
 
         </section>
