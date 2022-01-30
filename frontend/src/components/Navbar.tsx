@@ -12,7 +12,7 @@ export const Navbar:FC = (props) => {
     console.log(location);
 
   return (
-    <div className=' w-full justify-between h-16 items-center mt-1 max-w-7xl px-10 m-auto' style={location.pathname.toString() === '/login' ? {display: 'none'} : {display: 'flex'}}>
+    <div className=' w-full justify-between h-16 items-center mt-1 max-w-7xl px-10 m-auto' style={location.pathname.toString() === '/login' || location.pathname.toString() === '/signup' ? {display: 'none'} : {display: 'flex'}}>
     
     <section>
         <Link to='/'>
