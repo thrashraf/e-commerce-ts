@@ -21,11 +21,14 @@ export const Login = (props: Props) => {
         <input type='password' className='bg-gray-200 max-w-sm px-3 py-3 rounded-md focus:outline-none mt-5'/>
 
         <section className='flex justify-center items-center mt-10 text-sm text-gray-400'>
-            <input type="checkbox" name="" id="" className='mr-2' />
-            <p>accept terms & condition</p>
+            <input type="checkbox" name="" id="" className='mr-2'/>
+            <p className='text-gray-400'>keep me logged in</p>
         </section>
 
-        <button className='mt-20 px-6 py-3 bg-blue-500 w-[150px] mx-auto font-semibold rounded-lg text-white'>Login</button>
+        <button className='mt-10 px-6 py-3 bg-blue-500 font-semibold rounded-lg text-white hover:bg-blue-400 focus:outline-none'>Login</button>
+
+        <p className='text-center mt-9 text-gray-400 text-sm'>Dont't have an account? <span className='text-blue-500 cursor-pointer hover:underline'>Sign up</span></p>
+        <span className='text-blue-500 text-sm hover:underline text-center mt-5 cursor-pointer'>Forgot Password ?</span>
     </section>
 
   </div>;
