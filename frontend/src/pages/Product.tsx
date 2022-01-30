@@ -72,7 +72,9 @@ const Product = (props: Props) => {
                 <button className='px-8 py-2 rounded-md text-white font-medium bg-blue-500 hover:bg-blue-400 focus:outline-none'>Buy Now</button>                
             </section>
 
-            <section className='mt-16'>
+            <span className='flex border-t border-gray-300 mt-20 max-w-sm'></span>
+
+            <section className='mt-10'>
                 <h3 className='text-lg'>Product Specifications</h3>
 
                 <section className='w-[250px] flex justify-between text-gray-500 mt-5 text-sm leading-8'>
@@ -89,6 +91,8 @@ const Product = (props: Props) => {
                     </aside>
                 </section>
             </section>
+
+            <span className='flex border-t border-gray-300 mt-10 max-w-sm'></span>
 
             <section className='mt-10 max-w-md '>
                 <h3 className='text-lg'>Product Description</h3>

@@ -580,6 +580,10 @@ video {
 	margin-top: 2.5rem;
 	margin-bottom: 2.5rem;
 }
+.my-20{
+	margin-top: 5rem;
+	margin-bottom: 5rem;
+}
 .mt-5{
 	margin-top: 1.25rem;
 }
@@ -600,6 +604,9 @@ video {
 }
 .mt-10{
 	margin-top: 2.5rem;
+}
+.mt-20{
+	margin-top: 5rem;
 }
 .grid{
 	display: grid;
@@ -670,6 +677,9 @@ video {
 .max-w-md{
 	max-width: 28rem;
 }
+.max-w-sm{
+	max-width: 24rem;
+}
 .cursor-pointer{
 	cursor: pointer;
 }
@@ -706,9 +716,29 @@ video {
 .border-\[1\.5px\]{
 	border-width: 1.5px;
 }
+.border{
+	border-width: 1px;
+}
+.border-t{
+	border-top-width: 1px;
+}
+.border-t-4{
+	border-top-width: 4px;
+}
+.border-t-2{
+	border-top-width: 2px;
+}
 .border-gray-500{
 	--tw-border-opacity: 1;
 	border-color: rgba(107, 114, 128, var(--tw-border-opacity));
+}
+.border-gray-400{
+	--tw-border-opacity: 1;
+	border-color: rgba(156, 163, 175, var(--tw-border-opacity));
+}
+.border-gray-300{
+	--tw-border-opacity: 1;
+	border-color: rgba(209, 213, 219, var(--tw-border-opacity));
 }
 .bg-red-600{
 	--tw-bg-opacity: 1;
@@ -800,6 +830,10 @@ video {
 .py-\[2px\]{
 	padding-top: 2px;
 	padding-bottom: 2px;
+}
+.py-10{
+	padding-top: 2.5rem;
+	padding-bottom: 2.5rem;
 }
 .font-custom{
 	font-family: Poppins, sans-serif;
