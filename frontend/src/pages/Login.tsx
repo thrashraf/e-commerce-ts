@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import loginImage from '../assets/login.jpg'
+
 
 type Props = {};
 
@@ -27,7 +29,7 @@ export const Login = (props: Props) => {
 
         <button className='mt-10 px-6 py-3 bg-blue-500 font-semibold rounded-lg text-white hover:bg-blue-400 focus:outline-none'>Login</button>
 
-        <p className='text-center mt-9 text-gray-400 text-sm'>Dont't have an account? <span className='text-blue-500 cursor-pointer hover:underline'>Sign up</span></p>
+        <p className='text-center mt-9 text-gray-400 text-sm'>Dont't have an account?<Link to='/signup' className='text-blue-500 cursor-pointer hover:underline ml-1'>Sign up</Link></p>
         <span className='text-blue-500 text-sm hover:underline text-center mt-5 cursor-pointer'>Forgot Password ?</span>
     </section>
 
