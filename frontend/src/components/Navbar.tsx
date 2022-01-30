@@ -1,7 +1,9 @@
 import React, {FC} from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png'
-import defaultProfile from '../assets/default-user.png'
+// import defaultProfile from '../assets/default-user.png'
+
+
 
 
 export const Navbar:FC = (props) => {
@@ -22,9 +24,21 @@ export const Navbar:FC = (props) => {
         </ul>
     </section> */}
 
-    <section className='flex justify-around w-[300px] items-center'>
-        <img src={defaultProfile} alt='profile'className='w-[35px] h-[35px] object-contain cursor-pointer'/>
-        <p className=' font-medium cursor-pointer hover:text-gray-500'>John Doe</p>
+    <section className='flex justify-evenly w-[300px] items-center'>
+        {/* <img src={defaultProfile} alt='profile'className='w-[35px] h-[35px] object-contain cursor-pointer'/>
+        <p className=' font-medium cursor-pointer hover:text-gray-500'>John Doe</p> */}
+        
+        <section>
+            <span className='h-2 w-2 bg-red-600 rounded-full text-[5px]'>1</span>
+            <span className=' text-gray-500'><i className="fas fa-bell fa-lg" /></span>
+        </section>
+
+        <section>
+            <span className='h-2 w-2 bg-red-600 rounded-full text-[5px]'>1</span>
+            <span className=' text-gray-500'><i className="fas fa-shopping-cart fa-lg" /></span>
+        </section>
+
+        
         <button className='px-3 py-1.5 bg-blue-500 rounded-md text-white text-sm font-medium hover:bg-blue-400'>Sign Up</button>
     </section>
     
