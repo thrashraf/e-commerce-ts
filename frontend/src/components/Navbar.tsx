@@ -28,17 +28,16 @@ export const Navbar:FC = (props) => {
         {/* <img src={defaultProfile} alt='profile'className='w-[35px] h-[35px] object-contain cursor-pointer'/>
         <p className=' font-medium cursor-pointer hover:text-gray-500'>John Doe</p> */}
         
-        <section>
-            <span className='h-2 w-2 bg-red-600 rounded-full text-[5px]'>1</span>
-            <span className=' text-gray-500'><i className="fas fa-bell fa-lg" /></span>
+        <section className='relative'>
+            <span className=' px-[6px] py-[2px] text-white bg-[#F90716] rounded-full absolute left-3 bottom-3 text-[8px] cursor-pointer'>1</span>
+            <span className=' text-gray-400 hover:text-gray-300'><i className="fas fa-bell fa-lg cursor-pointer" /></span>
         </section>
 
-        <section>
-            <span className='h-2 w-2 bg-red-600 rounded-full text-[5px]'>1</span>
-            <span className=' text-gray-500'><i className="fas fa-shopping-cart fa-lg" /></span>
+        <section className='relative'>
+            <span className=' px-[6px] py-[2px] text-white bg-[#F90716] rounded-full absolute left-3 bottom-3 text-[8px] cursor-pointer '>1</span>
+            <span className=' text-gray-400 hover:text-gray-300'><i className="fas fa-shopping-cart fa-lg cursor-pointer" /></span>
         </section>
 
-        
         <button className='px-3 py-1.5 bg-blue-500 rounded-md text-white text-sm font-medium hover:bg-blue-400'>Sign Up</button>
     </section>
     

@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "concurrently \"nodemon api/server\" \"cd frontend && npm start\""
+    "start": "concurrently \"nodemon api/server\" \"cd frontend && npm run dev\""
   },
   "keywords": [],
   "author": "",
