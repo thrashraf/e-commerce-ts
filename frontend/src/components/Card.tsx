@@ -14,12 +14,12 @@ const Card = (props: Props) => {
       {props.data.length > 0 ? props.data.map(product =>  
           (
               <div className=' text-sm cursor-pointer' key={product.id}>
-                  <Link to={`/product/${product.id}`}>
-                    <img src={product.image} alt='' />
+                  <Link to={`/product/${product.id}`}> 
+                    <img src={product.image} alt='product' className='rounded-t-lg'/>
                     <section className='px-1 mt-5'>
-                    <h1 >{product.name.length > 30 ? product.name.slice(0, 31) + '...' : product.name}</h1>
+                    <h1 >{product.name.length > 30 ? product.name.slice(0, 21) + '...' : product.name}</h1>
 
-                    <aside className='flex justify-between mt-5'>
+                    <aside className='flex justify-between mt-6'>
                         <p className='text-gray-500'>${product.price}</p>
                         <section className='flex'>
                             <p className='text-gray-500 mr-1'>{product.sold} Sold</p>

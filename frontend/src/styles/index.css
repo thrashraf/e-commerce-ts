@@ -608,6 +608,9 @@ video {
 .mt-20{
 	margin-top: 5rem;
 }
+.mt-6{
+	margin-top: 1.5rem;
+}
 .grid{
 	display: grid;
 }
@@ -712,6 +715,13 @@ video {
 }
 .rounded-lg{
 	border-radius: 0.5rem;
+}
+.rounded-sm{
+	border-radius: 0.125rem;
+}
+.rounded-t-lg{
+	border-top-left-radius: 0.5rem;
+	border-top-right-radius: 0.5rem;
 }
 .border-\[1\.5px\]{
 	border-width: 1.5px;

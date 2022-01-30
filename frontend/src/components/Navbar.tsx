@@ -2,13 +2,17 @@ import React, {FC} from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png'
 // import defaultProfile from '../assets/default-user.png'
-
+import { useLocation } from 'react-router-dom';
 
 
 
 export const Navbar:FC = (props) => {
+
+    const location = useLocation();
+    console.log(location);
+
   return (
-    <div className=' w-full flex justify-between h-16 items-center mt-1 max-w-7xl px-10 m-auto'>
+    <div className=' w-full justify-between h-16 items-center mt-1 max-w-7xl px-10 m-auto' style={location.pathname.toString() === '/login' ? {display: 'none'} : {display: 'flex'}}>
     
     <section>
         <Link to='/'>
@@ -37,8 +41,10 @@ export const Navbar:FC = (props) => {
             <span className=' px-[6px] py-[2px] text-white bg-[#F90716] rounded-full absolute left-3 bottom-3 text-[8px] cursor-pointer '>1</span>
             <span className=' text-gray-400 hover:text-gray-300'><i className="fas fa-shopping-cart fa-lg cursor-pointer" /></span>
         </section>
-
-        <button className='px-3 py-1.5 bg-blue-500 rounded-md text-white text-sm font-medium hover:bg-blue-400'>Sign Up</button>
+        
+        <Link to='/login'>
+            <button className='px-3 py-1.5 bg-blue-500 rounded-md text-white text-sm font-medium hover:bg-blue-400 focus:outline-none'>Log in</button>
+        </Link>
     </section>
     
     </div>
