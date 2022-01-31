@@ -6,7 +6,6 @@ export const listProductById = (id: any) => async (dispatch: any) => {
 
     try {
         
-        
         console.log(id);
 
         dispatch({type: productDetail.REQUEST_PRODUCT_DETAIL})
