@@ -1,7 +1,10 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import route from './router/productsRoute.js';
+import bodyParser from 'body-parser';
+import productRoute from './router/productsRoute.js';
+import userRoute from './router/usersRoute.js';
+
 
 const app = express();
 dotenv.config();
@@ -12,7 +15,13 @@ app.use(cors({
     origin: '*'
 }))
 
-app.use('/api', route);
+// support parsing of application/json type post data
+app.use(bodyParser.json());
+
+//support parsing of application/x-www-form-urlencoded post data
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/api', productRoute, userRoute);
 
 
 app.listen(port, console.log(`server running on port ${port}`))

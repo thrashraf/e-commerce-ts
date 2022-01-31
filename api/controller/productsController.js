@@ -26,4 +26,5 @@ export const getProductsById = async (req, res, next) => {
         next(error)
     }
 
+
 }
