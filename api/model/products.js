@@ -12,17 +12,15 @@ class products {
     }
 
     static getAllProducts() {
-        const sql = "SELECT * FROM products"
 
+        const sql = "SELECT * FROM products"
         return db.execute(sql);
-         
     }
 
     static getProductById(id) {
-        const sql = `SELECT * FROM products WHERE id = ${id}`
 
+        const sql = `SELECT * FROM products WHERE id = ${id}`
         return db.execute(sql);
-         
     }
 }
 

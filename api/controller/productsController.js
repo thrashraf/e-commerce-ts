@@ -1,7 +1,7 @@
 import products from "../model/products.js"
 
 export const getAllProducts = async (req, res, next) => {
-
+    
     try {
         const [allProducts] = await products.getAllProducts()
         //console.log(allProducts);

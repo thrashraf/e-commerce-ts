@@ -5,27 +5,21 @@ import { loginConstant } from "../constant/loginConstant";
 export const loginUser = (email: string, password: string) => async (dispatch: any) => {
 
     try {
-        
-        console.log(email, password);
 
+        //console.log(email, password);
         dispatch({type: loginConstant.REQUEST_LOGIN})
-
-
-        const login = await axios.post(`http://localhost:5000/api/login`, {email, password})
-        const loginData = login.data;
-
-        console.log(loginData);        
+        const user = await axios.post(`http://localhost:5000/api/login`, {email, password}, {withCredentials: true})
         
         dispatch({
             type: loginConstant.SUCCESS_LOGIN,
-            payload: loginData
+            payload: user.data
         })
 
-    } catch (error) {
+    } catch (error: any) {
+        console.log(error.response.data.message);
         dispatch({
             type: loginConstant.FAIL_LOGIN,
-            payload: error
+            payload: error.response.data.message
         })
     }
-
 }
