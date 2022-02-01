@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector, RootStateOrAny} from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../actions/loginActions';
 import loginImage from '../assets/login.jpg'
 
@@ -12,6 +13,7 @@ export const Login = (props: Props) => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
 
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
   const { loading, user, error } = userDetail;
@@ -20,11 +22,14 @@ export const Login = (props: Props) => {
   const login = () => {
 
     if (email.trim.length < 0 && password.trim.length < 0) return console.log('lol');
-    
     dispatch(loginUser(email, password))
   }
 
-
+  useEffect(() => {
+    if (user) {
+      navigate(user.redirect)
+    }
+  }, [user, navigate])
 
 
   return <div className='grid grid-cols-2 h-screen'>

@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import productRoute from './router/productsRoute.js';
 import userRoute from './router/usersRoute.js';
@@ -11,9 +12,8 @@ dotenv.config();
 const port = process.env.port || 5000;
 
 
-app.use(cors({
-    origin: '*'
-}))
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+app.use(cookieParser())
 
 // support parsing of application/json type post data
 app.use(bodyParser.json());

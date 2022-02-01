@@ -1,5 +1,9 @@
-//? import users table
+import user from '../model/user.js';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 
+dotenv.config();
 
 export const signupUser = async (req, res, next) => {
 
@@ -30,19 +34,41 @@ export const loginUser = async (req, res, next) => {
     try {
 
         const { email, password } = req.body;
+        const [login] = await user.login(email);
+        
+        //? wanna check if use exist
+        if (login) {
 
-        console.log(email, password);
+            const userInfo = login[0]; 
+            
+            //console.log(password, userInfo.password);
+            //? compare password
+            const isPassValid = bcrypt.compareSync(password, userInfo.password)
+            //console.log(isPassValid);
 
-        //? bcyrpt compare hash password
+            if (isPassValid) {
 
-        //? user exist ? send jwt : throw error
+                jwt.sign(userInfo.id, process.env.ACCESS_TOKEN_SECRET, (err, result) => {
+                    
+                    if (err) return console.log(err);
 
-        // const [productById] = await products.getProductById(id)
-        // console.log(productById);
-        // res.status(200).json({productById});
+                    res.cookie('token', result, {httpOnly : false}).json({
+                        isAuth: true,
+                        firstName: userInfo.firstName,
+                        lastName: userInfo.lastName,
+                        role: userInfo.role,
+                        isVerified: userInfo.isVerified,
+                        redirect: '/'})
+                })
+                
+            } else {
+                console.log('invalid password');
+                res.status(401).json({message: 'invalid password'})
+            }
+        } 
 
     } catch (error) {
-        next(error)
+        res.status(401).json({message: 'invalid password lol'})
     }
 
 }
