@@ -16,7 +16,7 @@ export const Login = (props: Props) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
-  const { loading, user, error } = userDetail;
+  const { loading, userInfo, error } = userDetail;
 
 
   const login = () => {
@@ -26,10 +26,10 @@ export const Login = (props: Props) => {
   }
 
   useEffect(() => {
-    if (user) {
-      navigate(user.redirect)
+    if (userInfo) {
+      navigate(userInfo.redirect)
     }
-  }, [user, navigate])
+  }, [userInfo, navigate])
 
 
   return <div className='grid grid-cols-2 h-screen'>

@@ -29,13 +29,10 @@ export const refreshToken = async (req, res, next) => {
                 }
             )
 
-        } else {
-            throw new Error('invalid user');
-        }
+        } 
 
     } catch (error) {
-        res.status(401).json({message: 'invalid password lol'})
-        res.json({error})
+        
     }
 
     

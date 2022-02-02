@@ -2,39 +2,48 @@ import user from '../model/user.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
+import crypto from 'crypto';
 
 dotenv.config();
 
-export const signupUser = async (req, res, next) => {
+export const signupUser = async (req, res) => {
 
     try {
-
-        //const { firstName, lastName, email, password } = req.body;
+        const { firstName, lastName, email, password } = req.body;
+        console.log(firstName, lastName, email, password);
+        const id = crypto.randomBytes(16).toString('hex');
         
-        //? check if user's email is exist
+        const [checkExistingEmail] = await user.checkEmail(email)
+        
+        if (checkExistingEmail.length > 0) {
+            //console.log('email already exist');
+            res.status(409).json({message: 'email already exist'})
+            
+        } else {
 
-        //? bcyrpt password
-
-        //? save user's detail
-
-        //? send jwt
-
-        // const [productById] = await products.getProductById(id)
-        // console.log(productById);
-        // res.status(200).json({productById});
+            console.log('register User');
+            const hashPassword = bcrypt.hashSync(password);
+            
+            await user.createNewUser(id, firstName, lastName, email, hashPassword)
+            
+            res.status(201).json({
+                redirect: '/login',
+                message: 'please verified your email'
+            })
+        }
 
     } catch (error) {
-        next(error)
+        console.log(error);
     }
 
 }
 
-export const loginUser = async (req, res, next) => {
+export const loginUser = async (req, res) => {
 
     try {
 
         const { email, password } = req.body;
-        const [login] = await user.login(email);
+        const [login] = await user.checkEmail(email);
         
         //? wanna check if use exist
         if (login) {

@@ -4,12 +4,14 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { productsReducers } from './reducers/productsReducers';
 import { productDetailReducers} from './reducers/productDetailReducers'
 import { loginReducer } from './reducers/loginReducer';
+import { signupReducers } from './reducers/signupReducers';
 
 // ? redux setup
 const reducer = combineReducers({
     productsReducers,
     productDetailReducers,
-    loginReducer
+    loginReducer,
+    signupReducers
 });
 
 const initialState = {};
