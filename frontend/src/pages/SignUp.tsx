@@ -19,6 +19,8 @@ export const SignUp = (props: Props) => {
     dispatch(signupUser(firstName, lastName, email, password))
   }
 
+  
+
 
   return <div className='grid grid-cols-2 h-screen'>
       

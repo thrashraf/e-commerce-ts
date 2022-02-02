@@ -24,15 +24,7 @@ export const Navbar:FC = (props) => {
         </Link>
     </section>
 
-    {/* <section className='w-[300px]'>
-        <ul className='flex justify-between font-medium'>
-            <li>HOME</li>
-            <li>PROFILE</li>
-            <li>CART</li>
-        </ul>
-    </section> */}
-
-    <section className='flex justify-between w-[250px] items-center'>
+    <section className='flex justify-evenly w-[250px] items-center'>
        
         
         <section className='relative'>
@@ -46,10 +38,12 @@ export const Navbar:FC = (props) => {
         </section>
 
         {userInfo ? (
-            <section className='flex w-[130px] justify-around items-center hover:bg-gray-100 px-2 py-1 rounded-full'>
-                <img src={userInfo.photo ? userInfo.photo : defaultProfile} alt='profile'className='w-[35px] h-[35px] object-contain cursor-pointer'/>
-                <p className='cursor-pointer hover:text-gray-500 text-sm'>{userInfo.lastName}</p>
-            </section>) 
+            <Link to={`/profile/${userInfo.id}`}>
+                <section className='flex w-[130px] justify-around items-center hover:bg-gray-100 px-2 py-1 rounded-full'>
+                    <img src={userInfo.photo ? userInfo.photo : defaultProfile} alt='profile'className='w-[35px] h-[35px] object-contain cursor-pointer'/>
+                    <p className='cursor-pointer hover:text-gray-500 text-sm'>{userInfo.lastName}</p>
+                </section> 
+            </Link>)
             : (
             <Link to='/login'>
                 <button className='px-3 py-1.5 bg-blue-500 rounded-md text-white text-sm font-medium hover:bg-blue-400 focus:outline-none'>Log in</button>

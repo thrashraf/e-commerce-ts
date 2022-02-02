@@ -62,6 +62,7 @@ export const loginUser = async (req, res) => {
                     if (err) return console.log(err);
 
                     res.cookie('token', result, {httpOnly : false}).json({
+                        id: userInfo.id,
                         isAuth: true,
                         firstName: userInfo.firstName,
                         lastName: userInfo.lastName,
