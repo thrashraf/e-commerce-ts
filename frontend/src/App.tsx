@@ -1,23 +1,31 @@
 import React, { useEffect } from 'react';
 import './styles/index.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useDispatch, useSelector, RootStateOrAny } from 'react-redux';
+import { refreshAction } from './actions/refreshAction';
 import {Navbar}  from './components/Navbar'
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
 import { SignUp } from './pages/SignUp';
 import Product from './pages/Product';
-import axios from 'axios';
 
 
 function App() {
+  
+  const dispatch = useDispatch()
+  const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
+
+  const { user } = userDetail;
 
   useEffect(() => {
 
-    axios.get('http://localhost:5000/api/user', {withCredentials: true})
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+    dispatch(refreshAction())
     
-  }, [])
+  }, [dispatch])
+
+  if (user) {
+    console.log(user);
+  }
 
   return (
 
