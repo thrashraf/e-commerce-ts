@@ -10,7 +10,7 @@ import { useLocation } from 'react-router-dom';
 export const Navbar:FC = (props) => {
 
     const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
-    const { user } = userDetail
+    const { userInfo } = userDetail
 
     const location = useLocation();
     //console.log(location);
@@ -45,10 +45,10 @@ export const Navbar:FC = (props) => {
             <span className=' text-gray-400 hover:text-gray-300'><i className="fas fa-shopping-cart fa-lg cursor-pointer" /></span>
         </section>
 
-        {user ? (
+        {userInfo ? (
             <section className='flex w-[130px] justify-around items-center hover:bg-gray-100 px-2 py-1 rounded-full'>
-                <img src={user.photo ? user.photo : defaultProfile} alt='profile'className='w-[35px] h-[35px] object-contain cursor-pointer'/>
-                <p className='cursor-pointer hover:text-gray-500 text-sm'>{user.lastName}</p>
+                <img src={userInfo.photo ? userInfo.photo : defaultProfile} alt='profile'className='w-[35px] h-[35px] object-contain cursor-pointer'/>
+                <p className='cursor-pointer hover:text-gray-500 text-sm'>{userInfo.lastName}</p>
             </section>) 
             : (
             <Link to='/login'>
