@@ -7,6 +7,7 @@ import {Navbar}  from './components/Navbar'
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
 import { SignUp } from './pages/SignUp';
+import { Profile } from './pages/Profile';
 import Product from './pages/Product';
 
 
@@ -37,6 +38,7 @@ function App() {
           <Route path='/product/:id' element={<Product />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
+          <Route path='/profile/:id' element={<Profile />} />
         </Routes>
     </BrowserRouter>
     </div>
