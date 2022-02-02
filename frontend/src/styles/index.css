@@ -658,6 +658,15 @@ video {
 .w-\[130px\]{
 	width: 130px;
 }
+.w-\[120px\]{
+	width: 120px;
+}
+.w-\[110px\]{
+	width: 110px;
+}
+.w-\[10px\]{
+	width: 10px;
+}
 .max-w-7xl{
 	max-width: 80rem;
 }
