@@ -27,6 +27,7 @@ export const refreshToken = async (req, res, next) => {
                     lastName: userInfo.lastName,
                     role: userInfo.role,
                     isVerified: userInfo.isVerified,
+                    phoneNumber: userInfo.phoneNumber,
                     redirect: '/'
                 }
             )

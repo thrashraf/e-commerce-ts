@@ -69,6 +69,7 @@ export const loginUser = async (req, res) => {
                         lastName: userInfo.lastName,
                         role: userInfo.role,
                         isVerified: userInfo.isVerified,
+                        phoneNumber: userInfo.phoneNumber,
                         redirect: '/'})
                 })
                 
