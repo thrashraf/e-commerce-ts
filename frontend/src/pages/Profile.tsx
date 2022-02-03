@@ -19,6 +19,10 @@ export const Profile = (props: Props) => {
 
   const [editMode, setEditMode] = useState<boolean>(false);
 
+  
+
+
+
   return <div>
 
     {loading 
@@ -89,16 +93,19 @@ export const Profile = (props: Props) => {
 
     </section>      
 
-    <section className='grid grid-cols-2 mt-24 gap-5'>
+    {userInfo ? (
+      <div>
+        <section className='grid grid-cols-2 mt-24 gap-5'>
+          <DynamicInput content={userInfo.firstName} editMode={editMode} title='First Name' />
+          <DynamicInput content={userInfo.lastName} editMode={editMode} title='Last Name'/>
 
-      <DynamicInput content={userInfo.firstName} editMode={editMode} title='First Name' />
-      <DynamicInput content={userInfo.lastName} editMode={editMode} title='Last Name'/>
+        </section>
 
-    </section>
-
-    <section className='mt-5'>
-      <DynamicInput content={userInfo.email} editMode={editMode} title='Email' />
-    </section>
+        <section className='mt-5'>
+          <DynamicInput content={userInfo.email} editMode={editMode} title='Email' />
+        </section>
+      </div>
+    ) : null}
 
 
     
