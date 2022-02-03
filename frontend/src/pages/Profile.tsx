@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector,RootStateOrAny } from 'react-redux';
 import { DynamicInput } from '../components/DynamicInput'
 import accountImage from '../assets/account.png'
@@ -18,18 +18,32 @@ export const Profile = (props: Props) => {
   const { userInfo, loading } = userDetail;
 
   const [editMode, setEditMode] = useState<boolean>(false);
+  const [firstName, setFirstName] = useState<string>('')
+  const [lastName, setLastName] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const [phoneNumber, setPhoneNumber] = useState<string>('')
+
+  useEffect(() => {
+
+    if (!loading) {
+
+      setFirstName(userInfo.firstName)
+      setLastName(userInfo.lastName)
+      setEmail(userInfo.email)
+      setPhoneNumber(userInfo.phoneNumber)
+    }
+
+  }, [loading])
+
 
   
-
-
-
   return <div>
 
     {loading 
     ? <Spinner />
     : ( 
       
-    <div className=' max-w-7xl flex px-10 pt-5 m-auto'>
+    <div className=' max-w-7xl flex px-10 m-auto'>
 
     <section className=' w-1/3 '>
 
@@ -89,6 +103,9 @@ export const Profile = (props: Props) => {
           <img src={defaultImage} alt="profile" className='w-[130px] h-[130px] absolute bottom-[-70px] left-5'/>
 
           <button className='bg-blue-500 px-4 py-1 text-sm float-right text-white rounded-md  my-4' disabled={editMode} onClick={() => setEditMode(!editMode)} style={editMode ? {backgroundColor: '#dbeafe'} : {}}><i className="far fa-edit"></i> edit profile</button>
+
+          <button className='bg-blue-500 px-4 py-1 text-sm float-right text-white rounded-md  my-4 mx-5' onClick={() => setEditMode(!editMode)} style={editMode ? {display: 'block'} : {display: 'none'}}><i className="far fa-save mr-2"></i>Save</button>
+
         </div>
 
     </section>      
@@ -96,20 +113,15 @@ export const Profile = (props: Props) => {
     {userInfo ? (
       <div>
         <section className='grid grid-cols-2 mt-24 gap-5'>
-          <DynamicInput content={userInfo.firstName} editMode={editMode} title='First Name' />
-          <DynamicInput content={userInfo.lastName} editMode={editMode} title='Last Name'/>
+          <DynamicInput content={firstName} editMode={editMode} title='First Name' onChange={(e) => setFirstName(e.target.value)}/>
+          <DynamicInput content={lastName} editMode={editMode} title='Last Name' onChange={(e) => setLastName(e.target.value)}/>
 
-        </section>
+          <DynamicInput content={email} editMode={editMode} title='Email' onChange={(e) => setEmail(e.target.value)}/>
 
-        <section className='mt-5'>
-          <DynamicInput content={userInfo.email} editMode={editMode} title='Email' />
+          <DynamicInput content={phoneNumber === null ? 'Not Set' : phoneNumber} editMode={editMode} title='Phone Number' onChange={(e) => setPhoneNumber(e.target.value)}/>
         </section>
       </div>
     ) : null}
-
-
-    
-
 
   </section>
 </div>)
