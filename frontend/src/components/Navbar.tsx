@@ -24,7 +24,7 @@ export const Navbar:FC = (props) => {
         </Link>
     </section>
 
-    <section className='flex justify-evenly w-[250px] items-center'>
+    <section className='flex justify-evenly w-[300px] items-center'>
        
         
         <section className='relative'>
