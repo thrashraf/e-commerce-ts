@@ -1,6 +1,6 @@
 import { loginConstant } from "../constant/loginConstant";
 
-export const loginReducer = (state = {userInfo: null}, action:any) => {
+export const loginReducer = (state = {userInfo: null, loading: true}, action:any) => {
     
     switch (action.type) {
         case loginConstant.REQUEST_LOGIN:
