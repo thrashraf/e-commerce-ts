@@ -63,6 +63,7 @@ export const loginUser = async (req, res) => {
 
                     res.cookie('token', result, {httpOnly : false}).json({
                         id: userInfo.id,
+                        email: userInfo.email,
                         isAuth: true,
                         firstName: userInfo.firstName,
                         lastName: userInfo.lastName,

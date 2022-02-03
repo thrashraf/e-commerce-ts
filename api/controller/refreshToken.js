@@ -20,6 +20,8 @@ export const refreshToken = async (req, res, next) => {
             
             res.status(200).json(
                 {
+                    id: userInfo.id,
+                    email: userInfo.email,
                     isAuth: true,
                     firstName: userInfo.firstName,
                     lastName: userInfo.lastName,
