@@ -40,7 +40,9 @@ export const Navbar:FC = (props) => {
         {userInfo ? (
             <Link to={`/profile/${userInfo.id}`}>
                 <section className='flex w-[130px] justify-around items-center hover:bg-gray-100 px-2 py-1 rounded-full'>
-                    <img src={userInfo.photo ? userInfo.photo : defaultProfile} alt='profile'className='w-[35px] h-[35px] object-contain cursor-pointer'/>
+                    <span className='bg-gray-300  px-3 py-2 rounded-full text-white'>
+                        <i className="fas fa-user fa-lg"></i>
+                    </span>
                     <p className='cursor-pointer hover:text-gray-500 text-sm'>{userInfo.lastName}</p>
                 </section> 
             </Link>)
