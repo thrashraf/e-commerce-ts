@@ -2,7 +2,6 @@ import React, {FC} from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, RootStateOrAny } from 'react-redux';
 import logo from '../assets/logo.png'
-import defaultProfile from '../assets/default-user.png'
 import { useLocation } from 'react-router-dom';
 
 
@@ -16,7 +15,7 @@ export const Navbar:FC = (props) => {
     //console.log(location);
 
   return (
-    <div className=' w-full justify-between h-16 items-center mt-1 max-w-7xl px-10 m-auto' style={location.pathname.toString() === '/login' || location.pathname.toString() === '/signup' ? {display: 'none'} : {display: 'flex'}}>
+    <div className=' w-full justify-between h-16 items-center  max-w-7xl px-10 m-auto' style={location.pathname.toString() === '/login' || location.pathname.toString() === '/signup' ? {display: 'none'} : {display: 'flex'}}>
     
     <section>
         <Link to='/'>
