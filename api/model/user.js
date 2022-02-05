@@ -27,7 +27,7 @@ class user {
 
     static async createNewUser(id, firstName, lastName, email, password) {
 
-        console.log(id, firstName, lastName, email, password);
+        //console.log(id, firstName, lastName, email, password);
 
         const sql = `INSERT INTO
                         users (
@@ -51,6 +51,26 @@ class user {
                             'local',
                             FALSE
                         );`
+
+        return db.execute(sql);
+    }
+
+
+    static async updateUser(id, firstName, lastName, email, phoneNumber) {
+
+        const sql = `
+
+        UPDATE
+            users
+        SET
+            firstName = '${firstName}',
+            lastName = '${lastName}',
+            email = '${email}',
+            phoneNumber = '${phoneNumber}'
+        WHERE
+            id = '${id}'
+        
+        `
 
         return db.execute(sql);
     }
