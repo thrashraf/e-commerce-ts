@@ -48,25 +48,25 @@ export const PersonalSideBar = (props: Props) => {
       </section>
     </aside>
 
+
     <aside className='flex my-5  border border-gray-300 rounded-xl px-3 py-3 cursor-pointer'  style={isActive(3)} onClick={changeTabs(3)}>
       <div className='bg-blue-500 px-3 py-3 rounded-lg mr-5'>
-        <img src={paymentImage} alt="payment" className=' w-[25px] h-[25px]'/>
+        <img src={securityImage} alt="security" className=' w-[25px] h-[25px]' />
       </div>
       <section>
-        <h1>Payment method</h1>
-        <p className='text-[12px] mt-1 text-gray-400'>Connected credit cards</p>
+        <h1>Privacy & Security</h1>
+        <p className='text-[12px] mt-1 text-gray-400'>Password</p>
       </section>
     </aside>
 
     <aside className='flex my-5  border border-gray-300 rounded-xl px-3 py-3 cursor-pointer'  style={isActive(4)} onClick={changeTabs(4)}>
       <div className='bg-blue-500 px-3 py-3 rounded-lg mr-5'>
-        <img src={securityImage} alt="security" className=' w-[25px] h-[25px]' />
+        <img src='/images/setting.png' alt="payment" className=' w-[25px] h-[25px]'/>
       </div>
       <section>
-        <h1>Security</h1>
-        <p className='text-[12px] mt-1 text-gray-400'>Password</p>
+        <h1>Settings</h1>
+        <p className='text-[12px] mt-1 text-gray-400'>Web setting</p>
       </section>
     </aside>
-
   </div>;
 };

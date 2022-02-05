@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { RootStateOrAny, useSelector } from 'react-redux';
 import { DynamicInput } from '../DynamicInput'
-import { PersonalSideBar } from '../PersonalSideBar';
 
 type Props = {};
 
@@ -23,7 +22,7 @@ export const Information = (props: Props) => {
   }, [loading])
 
   const [editMode, setEditMode] = useState<boolean>(false);
-  const [tabs, setTabs] = useState<number>(1);
+
 
   const [firstName, setFirstName] = useState<string>('')
   const [lastName, setLastName] = useState<string>('')
@@ -31,13 +30,9 @@ export const Information = (props: Props) => {
   const [phoneNumber, setPhoneNumber] = useState<string>('')
 
 
-  return <div className=' max-w-7xl flex px-10 m-auto'>
+  return <div className=' '>
 
-  <section className=' w-1/3 '>
-  <PersonalSideBar tabs={tabs} setTabs={setTabs} />
-  </section>
-
-  <section className='w-full pl-16 mt-5'>
+  <section className='w-full mt-5'>
 
     <section className='relative'>
         <div>
