@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { RootStateOrAny, useSelector } from 'react-redux';
 import { DynamicInput } from '../DynamicInput'
@@ -29,6 +30,20 @@ export const Information = (props: Props) => {
   const [email, setEmail] = useState<string>('')
   const [phoneNumber, setPhoneNumber] = useState<string>('')
 
+  const updateUser = async () => {
+
+    const id = userInfo.id
+
+    await axios.post('http://localhost:5000/api/updateUser', {id, firstName, lastName, email, phoneNumber})
+    .then(res => {
+      console.log(res)
+      setEditMode(!editMode)
+      console.log('click');
+    })
+    .catch(err => console.log(err))
+    
+  }
+
 
   return <div className=' '>
 
@@ -47,7 +62,7 @@ export const Information = (props: Props) => {
 
           <button className='bg-blue-500 px-4 py-1 text-sm float-right text-white rounded-md  my-4' disabled={editMode} onClick={() => setEditMode(!editMode)} style={editMode ? {backgroundColor: '#dbeafe'} : {}}><i className="far fa-edit"></i> edit</button>
 
-          <button className='bg-blue-500 px-4 py-1 text-sm float-right text-white rounded-md  my-4 mx-5' onClick={() => setEditMode(!editMode)} style={editMode ? {display: 'block'} : {display: 'none'}}><i className="far fa-save mr-2"></i>Save</button>
+          <button className='bg-blue-500 px-4 py-1 text-sm float-right text-white rounded-md  my-4 mx-5' onClick={updateUser} style={editMode ? {display: 'block'} : {display: 'none'}}><i className="far fa-save mr-2"></i>Save</button>
 
         </div>
 

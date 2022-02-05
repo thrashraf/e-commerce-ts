@@ -84,3 +84,23 @@ export const loginUser = async (req, res) => {
     }
 
 }
+
+export const updateUserInformation = async (req, res) => {
+
+    try {
+        
+        const {id, firstName, lastName, email, phoneNumber} = req.body;
+        const [updateUser] = await user.updateUser(id, firstName, lastName, email, phoneNumber);
+
+        console.log(updateUser);
+
+        if (updateUser.affectedRows === 1) {
+            res.status(200).json({message: 'successful update!'})
+        } else {
+            res.status(401).json({message: 'error lol'})
+        }
+
+    } catch (error) {
+        res.send(404)
+    }
+}
