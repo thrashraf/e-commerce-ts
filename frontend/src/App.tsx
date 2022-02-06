@@ -40,15 +40,13 @@ function App() {
 
   return (
 
-    <div className="h-full w-full font-custom">
+    <div className="h-full w-full font-custom flex flex-col">
       
       {/* Backdrop */}
       <div  onClick={closeBackdrop} className={`w-full h-full bg-[#00000070] z-10 absolute m-0 p-0 ${modal ? 'block' : 'hidden'} `}  /> 
       
       
-      <section className={`${modal ? 'block' : 'hidden'}`}>
-        <Modal />
-      </section> 
+      
       
       <BrowserRouter>
       <Navbar />
