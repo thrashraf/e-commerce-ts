@@ -1,14 +1,24 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { showModal } from '../../actions/modalActions';
 
 type Props = {};
 
 export const Address = (props: Props) => {
+
+    const dispatch = useDispatch()
+
+    const addAddress = () => {
+        dispatch(showModal())
+    }
+
+
   return <div className=' mt-5'>
     
     <section className='flex justify-between'>
         <h1>My Addresses</h1>
 
-        <button className='text-white bg-blue-500 px-3 py-1 rounded-md text-sm'>
+        <button className='text-white bg-blue-500 px-3 py-1 rounded-md text-sm' onClick={addAddress}>
             <i className="fas fa-plus"></i> Add New Address
         </button>
     </section>

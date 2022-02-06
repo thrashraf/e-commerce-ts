@@ -5,13 +5,15 @@ import { productsReducers } from './reducers/productsReducers';
 import { productDetailReducers} from './reducers/productDetailReducers'
 import { loginReducer } from './reducers/loginReducer';
 import { signupReducers } from './reducers/signupReducers';
+import { modalReducers } from './reducers/modalReducers';
 
 // ? redux setup
 const reducer = combineReducers({
     productsReducers,
     productDetailReducers,
     loginReducer,
-    signupReducers
+    signupReducers,
+    modalReducers
 });
 
 const initialState = {};

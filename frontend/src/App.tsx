@@ -3,6 +3,7 @@ import './styles/index.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector, RootStateOrAny } from 'react-redux';
 import { refreshAction } from './actions/refreshAction';
+import { closeModal } from './actions/modalActions';
 import {Navbar}  from './components/Navbar'
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
@@ -10,17 +11,18 @@ import { SignUp } from './pages/SignUp';
 import { Profile } from './pages/Profile';
 import Product from './pages/Product';
 import { Modal } from './components/Modal'
-import Module from 'module';
 
 
 function App() {
   
   const dispatch = useDispatch()
   const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
+  const modalDetail = useSelector((state: RootStateOrAny) => state.modalReducers);
 
-  const [modal, setModal] = useState<boolean>(false);
+  
 
   const { user } = userDetail;
+  const { modal } = modalDetail;
 
   useEffect(() => {
 
@@ -32,13 +34,21 @@ function App() {
     console.log(user);
   }
 
+  const closeBackdrop = () => {
+    dispatch(closeModal())
+  }
+
   return (
 
     <div className="h-full w-full font-custom">
       
       {/* Backdrop */}
-      <div className={`w-full h-full bg-[#00000070] z-10 absolute m-0 p-0 ${modal ? 'block' : 'hidden'} `}  />
+      <div  onClick={closeBackdrop} className={`w-full h-full bg-[#00000070] z-10 absolute m-0 p-0 ${modal ? 'block' : 'hidden'} `}  /> 
       
+      
+      <section className={`${modal ? 'block' : 'hidden'}`}>
+        <Modal />
+      </section> 
       
       <BrowserRouter>
       <Navbar />
