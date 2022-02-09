@@ -1,26 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import { showModal } from '../../actions/modalActions';
 import { Modal } from '../Modal';
+import { Input } from '../Input'
 
 type Props = {};
 
 export const Address = (props: Props) => {
 
+    const [fullName, setFullName] = useState<string>('')
+    const [phoneNumber, setPhoneNumber] = useState<string>('')
+    const [address, setAddress] = useState<string>('')
+    const [state, setState] = useState<string>('')
+
     const dispatch = useDispatch()
     const modalDetail = useSelector((state: RootStateOrAny) => state.modalReducers);
+    //const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
 
     const { modal } = modalDetail
+    //const { userInfo } = userDetail
 
     const addAddress = () => {
         dispatch(showModal())
     }
 
-
+    
   return <div className=' mt-5'>
 
-    <section className={`${modal ? 'block' : 'hidden'} flex justify-center  `}>
-        <Modal />
+    <section className={`${modal ? 'flex' : 'hidden'} justify-center `}>
+        <Modal>
+            <section className='flex justify-between w-full gap-3'>
+                <Input value={fullName} setValue={setFullName} placeholder='Full Name'/>
+                <Input value={phoneNumber} setValue={setPhoneNumber} placeholder='Phone Number'/>
+            </section>
+            <section className=''>
+                <Input value={state} setValue={setState} placeholder='State'/>
+            </section>
+
+            <section>
+                <textarea name="" id="" cols={30} rows={6} placeholder='Address' className='w-full bg-gray-200 mt-5 rounded-lg px-3 py-1 focus:outline-none' />
+            </section>
+
+            <section className='flex justify-end'>
+                <button className=' mt-2 px-6 py-2 max-w-sm bg-blue-500 rounded-lg text-white hover:bg-blue-400 focus:outline-none'>Set</button>
+            </section>
+
+        </Modal>
     </section> 
     
     <section className='flex justify-between'>
