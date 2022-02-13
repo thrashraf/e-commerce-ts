@@ -75,6 +75,22 @@ class user {
         return db.execute(sql);
     }
 
+    static async addAddress(id, address) {
+
+
+        const sql = `
+        
+        UPDATE
+            users
+        SET
+            address = '${address}'
+        WHERE
+            id = '${id}'
+        `
+
+        return db.execute(sql);
+    }
+
 
 }
 
