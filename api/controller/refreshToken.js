@@ -17,6 +17,7 @@ export const refreshToken = async (req, res, next) => {
             const [verifyUser] = await user.user(id);
             const userInfo = verifyUser[0];
 
+
             
             res.status(200).json(
                 {
@@ -28,6 +29,7 @@ export const refreshToken = async (req, res, next) => {
                     role: userInfo.role,
                     isVerified: userInfo.isVerified,
                     phoneNumber: userInfo.phoneNumber,
+                    address: userInfo.address,
                     redirect: '/'
                 }
             )

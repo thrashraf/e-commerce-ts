@@ -70,6 +70,7 @@ export const loginUser = async (req, res) => {
                         role: userInfo.role,
                         isVerified: userInfo.isVerified,
                         phoneNumber: userInfo.phoneNumber,
+                        address: userInfo.address,
                         redirect: '/'})
                 })
                 
@@ -101,6 +102,33 @@ export const updateUserInformation = async (req, res) => {
         }
 
     } catch (error) {
-        res.send(404)
+        res.status(404)
     }
+}
+
+export const updateAddress =  async (req, res) => {
+
+    const cookie = req.cookies.token
+    const id = jwt.verify(cookie, process.env.ACCESS_TOKEN_SECRET);
+
+    try {
+        
+        const data = req.body
+
+        //console.log(req.body)
+        const userAddressJson = JSON.stringify(data)
+
+        //console.log(userAddressJson)
+
+        const [addNewAddress] = await user.addAddress(id, userAddressJson)
+
+        if (addNewAddress.changedRows !== 1) return res.status(401).json({message: 'error lol'})
+        res.status(200).json({message: 'successful update!'})
+        
+        console.log(addNewAddress)
+
+    } catch (error) {
+        console.log(error)
+    }
+
 }
