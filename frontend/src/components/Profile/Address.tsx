@@ -3,7 +3,7 @@ import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import { showModal } from '../../actions/modalActions';
 import axios from 'axios'
 import { Modal } from '../Modal';
-import { Input } from '../Input'
+
 
 type Props = {};
 
@@ -25,18 +25,17 @@ export const Address = (props: Props) => {
     const modalDetail = useSelector((state: RootStateOrAny) => state.modalReducers);
     
     const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
-    const { userInfo, loading } = userDetail;
+    const { userInfo } = userDetail;
 
     useEffect(() => {
 
-        if (!loading) {
-            
             if (userInfo.address === null) return
             setUserAddress(userInfo.address)
             console.log(userAddress);
-        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
-    }, [loading, userAddress, userInfo.address ])
+
 
     const { modal } = modalDetail
     //const { userInfo } = userDetail
@@ -44,6 +43,7 @@ export const Address = (props: Props) => {
 
     // * create new address
     const openAddAddressModal = () => {
+
         dispatch(showModal())
         setAddNewModal(!modal)
     }
@@ -61,8 +61,8 @@ export const Address = (props: Props) => {
         
         axios.post('http://localhost:5000/api/addAddress', userAddress, {withCredentials: true})
         .then(res => {
-            console.log(res);
-            console.log(userAddress);
+            //console.log(res);
+            //console.log(userAddress);
             alert(res.data.message)
         })
         .catch(err => alert(err.response.data.message))
@@ -78,15 +78,34 @@ export const Address = (props: Props) => {
         setUpdateIndex(id)
     }
 
+
+    const updateAddress = (id: number) => {
+
+        const oldAddress = userAddress.map((add: any, index:number) => {
+            return id === index ?
+            {...add, fullName, phoneNumber, state, address}
+            : add
+        })
+
+        console.log(oldAddress);
+        
+    }
+
+
+
     // * delete address
     const deleteAddress = (id:number) => {
 
         const address = [...userAddress]
         address.splice(id, 1)
-
-        // ? make delete request
-        setUserAddress(address);
-        console.log(address);
+        
+        axios.post('http://localhost:5000/api/deleteAddress', address, {withCredentials: true})
+        .then(res => {
+            setUserAddress(address);
+            //console.log(address);
+            alert(res.data.message)
+        })
+        .catch(err => console.log(err))
     }
 
 
@@ -105,9 +124,9 @@ export const Address = (props: Props) => {
 
     <section className={`${modal && editModal ? 'flex' : 'hidden'} justify-center `}>
 
-    {updateIndex ? (
+    {updateIndex !== undefined && updateIndex >= 0 ? (
         <Modal fullName={userAddress[updateIndex].fullName} phoneNumber={userAddress[updateIndex].phoneNumber} state={userAddress[updateIndex].state} address={userAddress[updateIndex].address}
-        setFullName={setFullName} setPhoneNumber={setPhoneNumber} setState={setState} setAddress={setAddress} save={setNewAddress} />
+        setFullName={setFullName} setPhoneNumber={setPhoneNumber} setState={setState} setAddress={setAddress} save={updateAddress.bind(this, updateIndex)} />
         )  : null}
         
     </section> 
