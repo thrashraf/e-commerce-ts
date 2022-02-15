@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
-import { showModal } from '../../actions/modalActions';
-import axios from 'axios'
-import { Modal } from '../Modal';
+import { showModal } from '../../../actions/modalActions';
+import { Modal } from '../../Modal';
+import { addAddress, deleteAddressAction } from '../../../actions/addressActions';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 type Props = {};
@@ -15,7 +16,6 @@ export const Address = (props: Props) => {
     const [state, setState] = useState<string>('')
 
     const [userAddress, setUserAddress] = useState<any>([]);
-
     const [updateIndex, setUpdateIndex] = useState<number>();
 
     const [addNewModal, setAddNewModal] = useState<boolean>(false)
@@ -23,9 +23,11 @@ export const Address = (props: Props) => {
 
     const dispatch = useDispatch()
     const modalDetail = useSelector((state: RootStateOrAny) => state.modalReducers);
-    
     const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
+    
     const { userInfo } = userDetail;
+    const { modal } = modalDetail
+    
 
     useEffect(() => {
 
@@ -35,20 +37,13 @@ export const Address = (props: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-
-
-    const { modal } = modalDetail
-    //const { userInfo } = userDetail
-
-
     // * create new address
     const openAddAddressModal = () => {
-
         dispatch(showModal())
         setAddNewModal(!modal)
     }
 
-    const setNewAddress = () => {
+    const setNewAddress = async () => {
 
         const newAddress = {
             fullName,
@@ -56,16 +51,9 @@ export const Address = (props: Props) => {
             address,
             state
         }
-
-        userAddress.push(newAddress)
-        
-        axios.post('http://localhost:5000/api/addAddress', userAddress, {withCredentials: true})
-        .then(res => {
-            //console.log(res);
-            //console.log(userAddress);
-            alert(res.data.message)
-        })
-        .catch(err => alert(err.response.data.message))
+        await userAddress.push(newAddress)
+        dispatch(addAddress(userAddress))
+        toast.success('Successful Add')
 
     }
 
@@ -76,8 +64,12 @@ export const Address = (props: Props) => {
         dispatch(showModal())
         setEditModal(!modal)
         setUpdateIndex(id)
-    }
 
+        setFullName(userAddress[id].fullName)
+        setPhoneNumber(userAddress[id].phoneNumber)
+        setState(userAddress[id].state)
+        setAddress(userAddress[id].address)
+    }
 
     const updateAddress = (id: number) => {
 
@@ -88,30 +80,26 @@ export const Address = (props: Props) => {
         })
 
         console.log(oldAddress);
-        
     }
 
 
-
     // * delete address
-    const deleteAddress = (id:number) => {
-
+    const deleteAddress = async (id:number) => {
+        
         const address = [...userAddress]
         address.splice(id, 1)
-        
-        axios.post('http://localhost:5000/api/deleteAddress', address, {withCredentials: true})
-        .then(res => {
-            setUserAddress(address);
-            //console.log(address);
-            alert(res.data.message)
-        })
-        .catch(err => console.log(err))
+
+        setUserAddress(address)
+        dispatch(deleteAddressAction(address))
+
+        toast.success('successful Delete')
     }
 
 
     
   return <div className=' mt-5'>
 
+    {/* //? add new modal */}
     <section className={`${modal && addNewModal ? 'flex' : 'hidden'} justify-center `}>
         <Modal fullName={fullName} phoneNumber={phoneNumber} state={state} address={address}
         setFullName={setFullName}
@@ -122,23 +110,24 @@ export const Address = (props: Props) => {
         />
     </section>
 
+    {/* //? update modal */}
     <section className={`${modal && editModal ? 'flex' : 'hidden'} justify-center `}>
-
     {updateIndex !== undefined && updateIndex >= 0 ? (
-        <Modal fullName={userAddress[updateIndex].fullName} phoneNumber={userAddress[updateIndex].phoneNumber} state={userAddress[updateIndex].state} address={userAddress[updateIndex].address}
+        <Modal fullName={fullName} phoneNumber={phoneNumber} state={state} address={address}
         setFullName={setFullName} setPhoneNumber={setPhoneNumber} setState={setState} setAddress={setAddress} save={updateAddress.bind(this, updateIndex)} />
         )  : null}
-        
     </section> 
+
     
+
     <section className='flex justify-between pb-5'>
+        <Toaster />
         <h1>My Addresses</h1>
 
         <button className='text-white bg-blue-500 px-3 py-1 rounded-md text-sm' onClick={openAddAddressModal}>
             <i className="fas fa-plus"></i> Add Address
         </button>
     </section>
-
 
 
     {userInfo ? userAddress.length > 0 ? 

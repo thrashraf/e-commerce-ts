@@ -3,7 +3,7 @@ import { useSelector,RootStateOrAny } from 'react-redux';
 import { Spinner } from '../components/Spinner/Spinner' 
 import { Information } from '../components/Profile/Information';
 import { PersonalSideBar } from '../components/PersonalSideBar';
-import { Address } from '../components/Profile/Address';
+import { Address } from '../components/Profile/Address/Address';
 import { Setting } from '../components/Profile/Setting';
 
 type Props = {};
