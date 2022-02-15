@@ -6,6 +6,7 @@ import { productDetailReducers} from './reducers/productDetailReducers'
 import { loginReducer } from './reducers/loginReducer';
 import { signupReducers } from './reducers/signupReducers';
 import { modalReducers } from './reducers/modalReducers';
+import { addressReducer } from './reducers/addressReducer';
 
 // ? redux setup
 const reducer = combineReducers({
@@ -13,7 +14,8 @@ const reducer = combineReducers({
     productDetailReducers,
     loginReducer,
     signupReducers,
-    modalReducers
+    modalReducers,
+    addressReducer
 });
 
 const initialState = {};
