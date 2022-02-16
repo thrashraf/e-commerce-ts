@@ -54,7 +54,6 @@ export const Address = (props: Props) => {
         await userAddress.push(newAddress)
         dispatch(addAddress(userAddress))
         toast.success('Successful Add')
-
     }
 
     //! need to remake this feature 🐛

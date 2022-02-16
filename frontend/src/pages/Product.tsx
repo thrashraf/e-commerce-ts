@@ -1,31 +1,62 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector, RootStateOrAny} from 'react-redux';
 import { listProductById } from '../actions/productDetailActions'
 import star from '../assets/star.png'
 import { Spinner } from '../components/Spinner/Spinner';
 import { useParams } from "react-router-dom";
+import { addToCart } from '../actions/cartAction';
 
 type Props = {};
 
 const Product = (props: Props) => {
 
+    const [cart, setCart] = useState<any []>([])
+    
     const { id } = useParams()
     const dispatch = useDispatch();
+
     const productByIdList = useSelector((state: RootStateOrAny) => state.productDetailReducers);
-    const { loading, productById, error } = productByIdList;
+    const { productById } = productByIdList;
 
-
+    const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
+    const { userInfo, loading } = userDetail;
+    
     useEffect(() => {
 
         dispatch(listProductById(id))
         
     }, [dispatch, id])
 
-    
 
+    //? for fetching cart
+    useEffect(() => {
+
+        if (!loading) {
+            if (userInfo.cart === null) return
+            setCart(userInfo.cart)
+            console.log(userInfo.cart);
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [loading])
+
+    const addItemToCartHandler = () => {
+
+        const item = cart.findIndex((item) => item.id === productById.id)
+
+        if (item >= 0) {
+            cart[item].quantity += 1
+            dispatch(addToCart(cart))
+        } else {
+            const cartItem = {...productById, quantity: 1}
+            cart.push(cartItem)
+            //console.table(cart);
+            dispatch(addToCart(cart))
+        }
+    }
+
+    
     return productById.length !== 0 ? 
-    (<div className='grid grid-cols-2 max-w-7xl m-auto px-10 gap-20 my-10'>
-        {console.log(productById)}
+    (<div className='grid grid-cols-2 max-w-7xl m-auto px-10 gap-20 py-10'>
         <section>
             <img src={productById.image} alt='product' className='rounded-lg'/>
         </section>
@@ -53,7 +84,7 @@ const Product = (props: Props) => {
             <section className='w-[200px] flex justify-between mb-10'>
                 <p>Quantity</p>
                 
-                <select className='w-[60px] border-gray-500 border-[1.5px] rounded-md px-2 focus:outline-none'>
+                <select className='w-[60px] border-gray-500 border-[1.5px] rounded-md px-2 focus:outline-none'>                   
                     <option value='1'>1</option>
                     <option value='2'>2</option>
                     <option value='3'>3</option>
@@ -68,7 +99,8 @@ const Product = (props: Props) => {
             </section>
 
             <section className=' max-w-[300px] flex justify-between mb-10'>
-                <button className='px-6 py-2 rounded-md bg-gray-500 text-white hover:bg-gray-400 focus:outline-none'>Add To Cart</button>
+                <button className='px-6 py-2 rounded-md bg-gray-500 text-white hover:bg-gray-400 focus:outline-none' onClick={addItemToCartHandler}>Add To Cart</button>
+
                 <button className='px-8 py-2 rounded-md text-white font-medium bg-blue-500 hover:bg-blue-400 focus:outline-none'>Buy Now</button>                
             </section>
 

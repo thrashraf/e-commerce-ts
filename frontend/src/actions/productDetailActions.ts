@@ -6,7 +6,7 @@ export const listProductById = (id: any) => async (dispatch: any) => {
 
     try {
         
-        console.log(id);
+        //console.log(id);
 
         dispatch({type: productDetail.REQUEST_PRODUCT_DETAIL})
 
@@ -14,7 +14,7 @@ export const listProductById = (id: any) => async (dispatch: any) => {
         const requestData = await axios.get(`http://localhost:5000/api/product/${id}`)
         const productsData = requestData.data.productById[0];
 
-        console.log(productsData);        
+        //console.log(productsData);        
         
         dispatch({
             type: productDetail.SUCCESS_REQUEST_PRODUCT,

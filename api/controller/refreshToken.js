@@ -30,6 +30,7 @@ export const refreshToken = async (req, res, next) => {
                     isVerified: userInfo.isVerified,
                     phoneNumber: userInfo.phoneNumber,
                     address: userInfo.address,
+                    cart: userInfo.cart,
                     redirect: '/'
                 }
             )

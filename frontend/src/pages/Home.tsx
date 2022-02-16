@@ -18,9 +18,6 @@ export const Home = (props: Props) => {
     
   }, [dispatch])
   
-
-  
-
   console.log(products);
 
   return <div className=' max-w-7xl px-10 m-auto'>

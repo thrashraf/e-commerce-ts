@@ -15,7 +15,7 @@ const Card = (props: Props) => {
           (
               <div className=' text-sm cursor-pointer' key={product.id}>
                   <Link to={`/product/${product.id}`}> 
-                    <img src={product.image} alt='product' className='rounded-t-lg'/>
+                    <img src={product.image} alt='product' className='rounded-t-lg' loading='lazy'/>
                     <section className='px-1 mt-5'>
                     <h1 >{product.name.length > 30 ? product.name.slice(0, 21) + '...' : product.name}</h1>
 
