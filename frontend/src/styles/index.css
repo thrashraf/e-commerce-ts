@@ -758,6 +758,9 @@ video {
 .flex{
     display: flex
 }
+.table{
+    display: table
+}
 .hidden{
     display: none
 }
@@ -1034,6 +1037,10 @@ video {
 .px-\[15\%\]{
     padding-left: 15%;
     padding-right: 15%
+}
+.py-10{
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem
 }
 .px-8{
     padding-left: 2rem;

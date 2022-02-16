@@ -4,7 +4,7 @@ export const getAllProducts = async (req, res, next) => {
     
     try {
         const [allProducts] = await products.getAllProducts()
-        //console.log(allProducts);
+        console.log(allProducts);
         res.status(200).json({allProducts});
     } catch (error) {
         next(error)

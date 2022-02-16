@@ -1,0 +1,7 @@
+export const cartConstant = {
+
+    ADD_PRODUCT: 'ADD_PRODUCT',
+    DELETE_PRODUCT: 'DELETE_PRODUCT',
+    ADD_QUANTITY: 'ADD_QUANTITY',
+    DROP_QUANTITY: 'DROP_QUANTITY'
+}
