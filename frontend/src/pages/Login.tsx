@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector, RootStateOrAny} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { loginUser } from '../actions/loginActions';
+import { loginUser } from '../services/auth/login/loginActions';
 import loginImage from '../assets/login.jpg'
 
 

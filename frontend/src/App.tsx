@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 import './styles/index.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector, RootStateOrAny } from 'react-redux';
-import { refreshAction } from './actions/refreshAction';
-import { closeModal } from './actions/modalActions';
+import { refreshAction } from './services/auth/refreshAction';
+import { closeModal } from './services/modal/modalActions';
 import {Navbar}  from './components/Navbar'
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
 import { SignUp } from './pages/SignUp';
 import { Profile } from './pages/Profile';
 import Product from './pages/Product';
-import { Modal } from './components/Modal'
+import { Cart } from './pages/Cart';
 
 
 function App() {
@@ -53,6 +53,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/profile/:id' element={<Profile />} />
+          <Route path='/cart' element={<Cart />} />
         </Routes>
     </BrowserRouter>
     </div>

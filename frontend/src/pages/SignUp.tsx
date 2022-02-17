@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { signupUser } from '../actions/signupActions';
+import { signupUser } from '../services/auth/signup/signupActions';
 import signupImage from '../assets/signup.jpg'
 
 type Props = {};
