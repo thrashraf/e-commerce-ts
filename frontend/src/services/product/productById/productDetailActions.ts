@@ -5,11 +5,10 @@ import { productDetail } from "../../../constant/productDetailConstant";
 export const listProductById = (id: any) => async (dispatch: any) => {
 
     try {
-        
         //console.log(id);
 
         dispatch({type: productDetail.REQUEST_PRODUCT_DETAIL})
-        
+
         const requestData = await axios.get(`http://localhost:5000/api/product/${id}`)
         const productsData = requestData.data.productById[0];
 
@@ -27,4 +26,8 @@ export const listProductById = (id: any) => async (dispatch: any) => {
         })
     }
 
+}
+
+export const resetProductDetail = () => (dispatch: any) => {
+    return dispatch({type: productDetail.RESET})
 }
