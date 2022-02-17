@@ -1050,6 +1050,9 @@ video {
 .rounded-sm{
     border-radius: 0.125rem
 }
+.rounded-2xl{
+    border-radius: 1rem
+}
 .rounded-t-lg{
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem
@@ -1320,6 +1323,12 @@ video {
 .pb-10{
     padding-bottom: 2.5rem
 }
+.pb-3{
+    padding-bottom: 0.75rem
+}
+.pb-2{
+    padding-bottom: 0.5rem
+}
 .text-center{
     text-align: center
 }
@@ -1413,6 +1422,10 @@ video {
 .hover\:bg-green-400:hover{
     --tw-bg-opacity: 1;
     background-color: rgba(52, 211, 153, var(--tw-bg-opacity))
+}
+.hover\:bg-green-300:hover{
+    --tw-bg-opacity: 1;
+    background-color: rgba(110, 231, 183, var(--tw-bg-opacity))
 }
 .hover\:text-gray-300:hover{
     --tw-text-opacity: 1;
