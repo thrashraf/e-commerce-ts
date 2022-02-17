@@ -5,11 +5,11 @@ import logo from "../assets/logo.png";
 import { useLocation } from "react-router-dom";
 
 export const Navbar: FC = (props) => {
+  
   const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
   const { userInfo } = userDetail;
 
   const location = useLocation();
-  //console.log(location);
 
   return (
     <div
@@ -43,7 +43,7 @@ export const Navbar: FC = (props) => {
 
         <section className="relative">
           <Link to="/cart">
-            {userInfo ? (
+            {userInfo && userInfo.cart ? (
               <span className=" px-[6px] py-[2px] text-white bg-[#F90716] rounded-full absolute left-3 bottom-3 text-[8px] cursor-pointer ">
                 {userInfo.cart.length}
               </span>
