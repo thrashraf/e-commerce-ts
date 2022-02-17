@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
-import { showModal } from '../../../actions/modalActions';
+import { showModal } from '../../../services/modal/modalActions';
 import { Modal } from '../../Modal';
-import { addAddress, deleteAddressAction } from '../../../actions/addressActions';
+import { addAddress, deleteAddressAction } from '../../../services/user-config/addressActions';
 import toast, { Toaster } from 'react-hot-toast';
 
 

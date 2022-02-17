@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector, RootStateOrAny} from 'react-redux';
-import { listProducts } from '../actions/productsActions';
+import { listProducts } from '../services/product/productsActions';
 import Card from '../components/Card';
 import { Spinner } from '../components/Spinner/Spinner';
 
@@ -18,7 +18,7 @@ export const Home = (props: Props) => {
     
   }, [dispatch])
   
-  console.log(products);
+  //console.log(products);
 
   return <div className=' max-w-7xl px-10 m-auto'>
     
