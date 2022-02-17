@@ -21,6 +21,12 @@ export const productDetailReducers = (state = {productById: []}, action:any) => 
                 loading: false, 
                 error: action.payload
             }
+
+        case productDetail.RESET:
+            return {
+                loading: false,
+                productById: []
+            }
             
         default:
             return state;

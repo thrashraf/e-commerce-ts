@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector, RootStateOrAny} from 'react-redux';
 import { listProducts } from '../services/product/productsActions';
+import { resetProductDetail } from '../services/product/productById/productDetailActions';
 import Card from '../components/Card';
 import { Spinner } from '../components/Spinner/Spinner';
 
@@ -15,14 +16,15 @@ export const Home = (props: Props) => {
   useEffect(() => {
 
     dispatch(listProducts())
+    dispatch(resetProductDetail())
     
-  }, [dispatch])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   
   //console.log(products);
 
   return <div className=' max-w-7xl px-10 m-auto'>
     
-
       {/* carousel */}
       {/* Search */}
     
