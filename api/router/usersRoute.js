@@ -1,5 +1,5 @@
 import express from 'express';
-import { loginUser, updateAddress, updateUserInformation, deleteAddress } from '../controller/usersController.js';
+import { loginUser, updateAddress, updateUserInformation, deleteAddress, getUserInformation } from '../controller/usersController.js';
 import { signupUser } from '../controller/usersController.js';
 import { refreshToken } from '../controller/refreshToken.js';
 
@@ -11,5 +11,6 @@ userRoute.get('/refresh', refreshToken);
 userRoute.post('/updateUser', updateUserInformation);
 userRoute.post('/addAddress', updateAddress);
 userRoute.post('/deleteAddress', deleteAddress);
+userRoute.get('/getUser', getUserInformation);
 
 export default userRoute

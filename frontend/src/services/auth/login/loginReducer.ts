@@ -1,11 +1,11 @@
 import { loginConstant } from "../../../constant/loginConstant";
 
-export const loginReducer = (state = {userInfo: null, loading: true}, action:any) => {
+export const loginReducer = (state = {userInfo: null, userloading: true}, action:any) => {
     
     switch (action.type) {
         case loginConstant.REQUEST_LOGIN:
             return { 
-                    loading: true, 
+                userloading: true, 
                     userInfo: null
                 }
     
@@ -13,14 +13,14 @@ export const loginReducer = (state = {userInfo: null, loading: true}, action:any
                 
                 
                 return { 
-                    loading: false, 
+                    userloading: false, 
                     userInfo: action.payload
                 }
     
     
             case loginConstant.FAIL_LOGIN:
                 return { 
-                    loading: false, 
+                    userloading: false, 
                     error: action.payload
                 }
                 

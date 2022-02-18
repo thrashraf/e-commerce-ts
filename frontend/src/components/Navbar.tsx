@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, RootStateOrAny } from "react-redux";
 import logo from "../assets/logo.png";
@@ -9,7 +9,18 @@ export const Navbar: FC = (props) => {
   const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
   const { userInfo } = userDetail;
 
+  const [update, setUpdate] = useState(false)
+
   const location = useLocation();
+
+  const cartDetail = useSelector((state: RootStateOrAny) => state.cartReducer);
+  const { cartLoading } = cartDetail;
+
+  useEffect(() => {
+    setUpdate(!update)
+    console.log(update);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cartLoading])
 
   return (
     <div

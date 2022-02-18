@@ -1,36 +1,39 @@
 import { cartConstant } from "../../constant/cartConstant";
-import { useEffect } from "react";
 
-
-
-
-export const cartReducer = (state = {cart: [], loading: true}, action:any) => {
+export const cartReducer = (state = {cart: [], cartLoading: true}, action:any) => {
     
     switch (action.type) {
 
-        case cartConstant.ADD_PRODUCT:
-            
-             return { 
-                    loading: true, 
-                    userInfo: null
-                }
-    
+            case cartConstant.ADD_PRODUCT:
+                
+                return { 
+                    cartLoading: true, 
+                        userCart: null
+                    }
+
+            case cartConstant.SUCCESS_ADD:
+                
+                return { 
+                    cartLoading: false, 
+                        userCart: action.payload
+                    }
+
             case cartConstant.DELETE_PRODUCT:
                 
                 return { 
-                    loading: false, 
-                    userInfo: action.payload
+                    cartLoading: false, 
+                    userCart: action.payload
                 }
     
             case cartConstant.ADD_QUANTITY:
                 return { 
-                    loading: false, 
+                    cartLoading: false, 
                     error: action.payload
                 }
 
             case cartConstant.DROP_QUANTITY:
                 return { 
-                    loading: false, 
+                    cartLoading: false, 
                     error: action.payload
                 }
                 

@@ -7,6 +7,8 @@ import { loginReducer } from './auth/login/loginReducer';
 import { signupReducers } from './auth/signup/signupReducers';
 import { modalReducers } from './modal/modalReducers';
 import { addressReducer } from './user-config/addressReducer';
+import { cartReducer } from './cart/cartReducer';
+import { userReducer } from './user/userReducer';
 
 // ? redux setup
 const reducer = combineReducers({
@@ -15,7 +17,9 @@ const reducer = combineReducers({
     loginReducer,
     signupReducers,
     modalReducers,
-    addressReducer
+    addressReducer,
+    cartReducer,
+    userReducer
 });
 
 const initialState = {};
