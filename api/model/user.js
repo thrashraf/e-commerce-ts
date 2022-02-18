@@ -9,8 +9,6 @@ class user {
 
     static async checkEmail(email) {
 
-        //console.log(email, password);
-
         const sql = `SELECT * FROM users where email = '${email}'`;
         return db.execute(sql);
         
@@ -90,6 +88,8 @@ class user {
 
         return db.execute(sql);
     }
+
+
 
 
 }

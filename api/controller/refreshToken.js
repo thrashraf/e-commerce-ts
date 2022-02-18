@@ -17,24 +17,11 @@ export const refreshToken = async (req, res, next) => {
             const [verifyUser] = await user.user(id);
             const userInfo = verifyUser[0];
 
-
-            
             res.status(200).json(
                 {
-                    id: userInfo.id,
-                    email: userInfo.email,
-                    isAuth: true,
-                    firstName: userInfo.firstName,
-                    lastName: userInfo.lastName,
-                    role: userInfo.role,
-                    isVerified: userInfo.isVerified,
-                    phoneNumber: userInfo.phoneNumber,
-                    address: userInfo.address,
-                    cart: userInfo.cart,
-                    redirect: '/'
+                    isLogin: true
                 }
             )
-
         } 
 
     } catch (error) {

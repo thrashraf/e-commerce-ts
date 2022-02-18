@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector, RootStateOrAny } from "react-redux";
-import { useUserInformation } from "../hooks/useUserInformation";
+import { useCart } from "../hooks/useCart";
 import { listProductById } from "../services/product/productById/productDetailActions";
-import { useLocation } from "react-router-dom";
 import star from "../assets/star.png";
 import { Spinner } from "../components/Spinner/Spinner";
 import { useParams } from "react-router-dom";
@@ -11,8 +10,8 @@ import { addToCart } from "../services/cart/cartAction";
 type Props = {};
 
 const Product = (props: Props) => {
+  
   const { id } = useParams();
-  const location = useLocation();
   const dispatch = useDispatch();
 
   const productByIdList = useSelector(
@@ -25,10 +24,7 @@ const Product = (props: Props) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
- 
-
-   //? fetchCart from custom hooks
-  const fetchCart = useUserInformation();
+  const fetchCart = useCart();
   const cart: any[] = fetchCart ? fetchCart : [];
 
   const addItemToCartHandler = () => {

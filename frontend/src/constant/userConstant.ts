@@ -1,0 +1,7 @@
+export const userConstant = {
+
+    GET_USER: 'GET_USER',
+    SUCCESS_GET_USER: 'SUCCESS_GET_USE',
+    FAIL_GET_USER: 'FAIL_GET_USER',
+    UPDATE_USER_INFORMATION: 'UPDATE_USER',
+}

@@ -63,14 +63,15 @@ export const loginUser = async (req, res) => {
 
                     res.cookie('token', result, {httpOnly : false}).json({
                         id: userInfo.id,
-                        email: userInfo.email,
-                        isAuth: true,
-                        firstName: userInfo.firstName,
-                        lastName: userInfo.lastName,
-                        role: userInfo.role,
-                        isVerified: userInfo.isVerified,
-                        phoneNumber: userInfo.phoneNumber,
-                        address: userInfo.address,
+                        // email: userInfo.email,
+                        // isAuth: true,
+                        // firstName: userInfo.firstName,
+                        // lastName: userInfo.lastName,
+                        // role: userInfo.role,
+                        // isVerified: userInfo.isVerified,
+                        // phoneNumber: userInfo.phoneNumber,
+                        // address: userInfo.address,
+                        // cart: userInfo.cart,
                         redirect: '/'})
                 })
                 
@@ -85,6 +86,39 @@ export const loginUser = async (req, res) => {
     }
 
 }
+
+export const getUserInformation =  async (req, res) => {
+
+    const cookie = req.cookies.token
+    console.log(cookie)
+    const id = jwt.verify(cookie, process.env.ACCESS_TOKEN_SECRET);
+
+    try {
+
+        if (!id) return res.status(400).json({message: 'lol u screwed up'})
+        
+        const [verifyUser] = await user.user(id);
+            const userInfo = verifyUser[0];
+            
+            res.status(200).json(
+                {
+                    id: userInfo.id,
+                    email: userInfo.email,
+                    isAuth: true,
+                    firstName: userInfo.firstName,
+                    lastName: userInfo.lastName,
+                    role: userInfo.role,
+                    isVerified: userInfo.isVerified,
+                    phoneNumber: userInfo.phoneNumber,
+                    address: userInfo.address,
+                }
+            )
+
+    } catch (error) {
+        console.log(error)
+    }
+
+} 
 
 export const updateUserInformation = async (req, res) => {
 
