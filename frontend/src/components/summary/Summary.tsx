@@ -6,7 +6,7 @@ type Props = {
 
 export const Summary = (props: Props) => {
   return (
-    <div className="bg-blue-500 rounded-xl px-5 text-white pb-2">
+    <div className=" border border-gray-200 shadow-lg rounded-xl px-5  pb-2">
       {props.children}
     </div>
   );

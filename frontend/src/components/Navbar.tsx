@@ -9,18 +9,14 @@ export const Navbar: FC = (props) => {
   const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
   const { userInfo } = userDetail;
 
-  const [update, setUpdate] = useState(false)
+  // const [cart, setUpdate] = useState(false)
 
   const location = useLocation();
 
   const cartDetail = useSelector((state: RootStateOrAny) => state.cartReducer);
-  const { cartLoading } = cartDetail;
+  const { cart } = cartDetail;
 
-  useEffect(() => {
-    setUpdate(!update)
-    console.log(update);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cartLoading])
+  
 
   return (
     <div
@@ -54,9 +50,9 @@ export const Navbar: FC = (props) => {
 
         <section className="relative">
           <Link to="/cart">
-            {userInfo && userInfo.cart ? (
+            {cart ? (
               <span className=" px-[6px] py-[2px] text-white bg-[#F90716] rounded-full absolute left-3 bottom-3 text-[8px] cursor-pointer ">
-                {userInfo.cart.length}
+                {cart.length}
               </span>
             ) : null}
 

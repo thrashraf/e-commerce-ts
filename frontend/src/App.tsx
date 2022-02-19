@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './styles/index.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector, RootStateOrAny } from 'react-redux';
@@ -28,7 +28,7 @@ function App() {
 
     const setup = async() => {
 
-      await dispatch(refreshAction())
+      dispatch(refreshAction())
       dispatch(getUserInformation())
       dispatch(getCartItem())
     }

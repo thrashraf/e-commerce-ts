@@ -1,6 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector, RootStateOrAny } from "react-redux";
-import { useCart } from "../hooks/useCart";
 import { listProductById } from "../services/product/productById/productDetailActions";
 import star from "../assets/star.png";
 import { Spinner } from "../components/Spinner/Spinner";
@@ -11,6 +10,8 @@ type Props = {};
 
 const Product = (props: Props) => {
   
+  const [userCart, setUserCart] = useState<any[]>([]);
+
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -19,25 +20,42 @@ const Product = (props: Props) => {
   );
   const { productById } = productByIdList;
 
+  const cartDetail = useSelector((state: RootStateOrAny) => state.cartReducer);
+  const { cart, cartLoading } = cartDetail;
+
+  //console.log(cart);
+
   useEffect(() => {
     dispatch(listProductById(id));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
-  const fetchCart = useCart();
-  const cart: any[] = fetchCart ? fetchCart : [];
+  useEffect(() => {
+    if (!cartLoading) {
+      if (!cart) return  
+      //console.log(cart);
+      setUserCart(cart);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cartLoading]);
 
   const addItemToCartHandler = () => {
-    const item = cart.findIndex((item: any) => item.id === productById.id);
+
+    const item = userCart.findIndex((item: any) => item.id === productById.id);
+    console.log(item);
 
     if (item >= 0) {
-      cart[item].quantity += 1;
-      dispatch(addToCart(cart));
+
+      userCart[item].quantity += 1;
+      dispatch(addToCart(userCart));
+
     } else {
+
       const cartItem = { ...productById, quantity: 1 };
-      cart.push(cartItem);
-      //console.table(cart);
-      dispatch(addToCart(cart));
+      console.log(cartItem);
+      userCart.push(cartItem);
+      dispatch(addToCart(userCart));
+
     }
   };
 
