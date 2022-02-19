@@ -3,21 +3,19 @@ import { RootStateOrAny, useSelector } from "react-redux";
 
 export const useCart = () => {
   
-    const [cart, setCart] = useState();    
+    const [userCart, setUserCart] = useState([]);    
     
-    const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
-    const { userInfo, userloading } = userDetail;
+    const cartDetail = useSelector((state: RootStateOrAny) => state.cartReducer);
+    const { cart, cartLoading } = cartDetail;
     
     useEffect(() => {
-
-        //console.log('rerender')
-
-        if (!userloading) {
-            console.log(userInfo)
-            setCart(userInfo.cart)
+        if (!cartLoading) {
+          if (!cart) return  
+          //console.log(cart);
+          setUserCart(cart);
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [userloading])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [cartLoading]);
 
-    return cart;
+    return userCart;
 }

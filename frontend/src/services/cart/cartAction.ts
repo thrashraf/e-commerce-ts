@@ -30,13 +30,11 @@ export const addToCart = (item: any) => async (dispatch: any) => {
         console.log(item)
 
         dispatch({type: cartConstant.ADD_PRODUCT})
-        const cart = await axios.post(`http://localhost:5000/api/cart/addItem`, item, {withCredentials: true})
-        
-        console.log(cart)
+        await axios.post(`http://localhost:5000/api/cart/addItem`, item, {withCredentials: true})
 
         dispatch({
             type: cartConstant.SUCCESS_ADD,
-            payload: cart.data
+            payload: item
         })
 
     } catch (error: any) {
