@@ -39,25 +39,21 @@ const Product = (props: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cartLoading]);
 
-  const addItemToCartHandler = () => {
-
-    const item = userCart.findIndex((item: any) => item.id === productById.id);
+  const addItemHandler = () => {
+    
+    const item = cart.findIndex((item: any) => item.id === productById.id);
     console.log(item);
 
     if (item >= 0) {
-
-      userCart[item].quantity += 1;
-      dispatch(addToCart(userCart));
-
+      cart[item].quantity += 1;
+      dispatch(addToCart(cart));
     } else {
-
       const cartItem = { ...productById, quantity: 1 };
       console.log(cartItem);
-      userCart.push(cartItem);
-      dispatch(addToCart(userCart));
-
-    }
-  };
+      cart.push(cartItem);
+      dispatch(addToCart(cart));
+      }
+  }
 
   return productById.length !== 0 ? (
     <div className="grid grid-cols-2 max-w-7xl m-auto px-10 gap-20 py-10">
@@ -105,7 +101,7 @@ const Product = (props: Props) => {
         <section className=" max-w-[300px] flex justify-between mb-10">
           <button
             className="px-6 py-2 rounded-md bg-gray-500 text-white hover:bg-gray-400 focus:outline-none"
-            onClick={addItemToCartHandler}
+            onClick={addItemHandler}
           >
             Add To Cart
           </button>

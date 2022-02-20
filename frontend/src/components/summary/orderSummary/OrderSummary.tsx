@@ -9,13 +9,13 @@ export const OrderSummary = (props: Props) => {
 
     const calculateTotalPrice = () => {
         if (props.order.length > 0) {
-            return props.order.reduce((sum, { price, quantity }) => sum + price * quantity, 0)
+            return props.order.reduce((sum, { price, quantity }) => sum + price * quantity, 0).toFixed(2)
         }
     }
 
   return (
     <Summary>
-        <div className='h-[400px] relative'>
+        <div className='h-[425px] relative'>
             <h1 className="font-medium py-5 text-blue-500">Order Summary</h1>
 
             <section className='px-5'>

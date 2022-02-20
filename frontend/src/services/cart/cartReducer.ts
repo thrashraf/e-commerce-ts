@@ -1,6 +1,6 @@
 import { cartConstant } from "../../constant/cartConstant";
 
-export const cartReducer = (state = {cart: [], cartLoading: true}, action:any) => {
+export const cartReducer = (state = {cart: [] as any[], cartLoading: true, quantity: 0, id: null}, action:any) => {
     
     switch (action.type) {
 
@@ -22,7 +22,7 @@ export const cartReducer = (state = {cart: [], cartLoading: true}, action:any) =
                 
                 return { 
                     cartLoading: true, 
-                    cart: null
+                    cart: action.payload 
                     }
 
             case cartConstant.SUCCESS_ADD:
@@ -40,10 +40,16 @@ export const cartReducer = (state = {cart: [], cartLoading: true}, action:any) =
                 }
     
             case cartConstant.ADD_QUANTITY:
-                return { 
-                    cartLoading: false, 
-                    error: action.payload
+
+                const { cart } = action;
+                //console.log(cart)
+                console.log(state.cart)
+                const index = state.cart.findIndex((item: any) => item.id === cart.id)
+                state.cart[index].quantity += 1
+                return {
+                    cart: state.cart
                 }
+
 
             case cartConstant.DROP_QUANTITY:
                 return { 

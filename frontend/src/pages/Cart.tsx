@@ -15,7 +15,7 @@ export const Cart = (props: Props) => {
   const { cart, cartLoading } = cartDetail;
   
   useEffect(() => {
-    //console.log(cart, cartLoading);
+    console.log(cart, cartLoading);
     if (!cartLoading) {
       if (!cart) return  
       //console.log(cart);
@@ -42,7 +42,7 @@ export const Cart = (props: Props) => {
 
       <div className={`${userCart.length > 0 ? 'w-[70%]' : 'w-[100%]'}`}>
 
-        {userCart.length > 0  ? (
+        {userCart.length >= 0  ? (
           userCart.length > 0 ? (
             <div>
               <section className="flex justify-between items-center mr-10 mb-5">
@@ -52,11 +52,13 @@ export const Cart = (props: Props) => {
 
               {userCart.map((item: any, index:number) => {
                 return (
-                  <div key={index} className='shadow-md w-[95%] rounded-lg flex mb-5 p-3'>
+                  <div key={index} className='shadow-md w-[95%] rounded-lg flex mb-5 px-3 py-7'>
                     <input type="checkbox" className="mr-3" onChange={e => handleChange(e, item)}/>
                     <CartItem image={item.image} name={item.name} quantity={item.quantity}
                     price={item.price} id={item.id}
-                    index={index} order={order}/>
+                    brand={item.brand} category={item.category} countInStock={item.countInStock}
+                    description={item.description} numReview={item.numReview} rating={item.rating}
+                    sold={item.sold} setUserCart={setUserCart} cart={userCart}/>
                   </div>
                 );
               })}

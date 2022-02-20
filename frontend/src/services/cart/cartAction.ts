@@ -11,7 +11,7 @@ export const getCartItem = () => async (dispatch: any) => {
 
         dispatch({
             type: cartConstant.GET_CART,
-            payload: cart.data
+            payload: cart.data ? cart.data : []
         })
 
     } catch (error: any) {
@@ -44,5 +44,18 @@ export const addToCart = (item: any) => async (dispatch: any) => {
             payload: error.response.data.message
         })
     }
+}
+
+
+export const incrementQuantity = (cart: any) => (dispatch: any) => {
+    dispatch({
+        type: cartConstant.ADD_QUANTITY,
+        cart: cart
+    })
+    //console.log(cart)
+}
+
+export const decrementQuantity = (quantity: number) => (dispatch: any) => {
+    dispatch({type: cartConstant.DROP_QUANTITY})
 }
 
