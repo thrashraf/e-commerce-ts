@@ -18,10 +18,7 @@ export const SignUp = (props: Props) => {
   const signup = () => {
     dispatch(signupUser(firstName, lastName, email, password))
   }
-
   
-
-
   return <div className='grid grid-cols-2 h-screen'>
       
       <section className='flex flex-col justify-center px-[15%]'>

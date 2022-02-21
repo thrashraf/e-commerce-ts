@@ -35,7 +35,7 @@ export const CartItem = (props: Props) => {
 
   const dropItemToCartHandler = () => {
     const index = props.cart.findIndex((item: any) => item.id === props.id);  
-    cart[index].quantity -= 1;
+    cart[index].quantity <= 1 ? cart.splice(index, 1) : cart[index].quantity -= 1;
     dispatch(addToCart(cart));
   };
 

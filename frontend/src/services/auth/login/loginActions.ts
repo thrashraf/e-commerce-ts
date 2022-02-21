@@ -8,7 +8,6 @@ export const loginUser = (email: string, password: string) => async (dispatch: a
         //console.log(email, password);
         dispatch({type: loginConstant.REQUEST_LOGIN})
         const user = await axios.post(`http://localhost:5000/api/login`, {email, password}, {withCredentials: true})
-        
         dispatch({
             type: loginConstant.SUCCESS_LOGIN,
             payload: user.data

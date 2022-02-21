@@ -12,7 +12,7 @@ export const Profile = (props: Props) => {
 
 
   const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
-  const { loading } = userDetail;
+  const { userLoading } = userDetail;
   const [tabs, setTabs] = useState<number>(1);
   
   const isSectionActive = (currentTabs: number) => {
@@ -26,7 +26,7 @@ export const Profile = (props: Props) => {
   return <div>
 
 
-    {loading 
+    {userLoading 
     ? <Spinner />
     : ( 
 
@@ -53,7 +53,6 @@ export const Profile = (props: Props) => {
   )
 }
 
-   
-    
+  
 </div>;
 };

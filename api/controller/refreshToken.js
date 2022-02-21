@@ -7,7 +7,7 @@ dotenv.config()
 export const refreshToken = async (req, res, next) => {
 
     try {
-        
+
         const token = req.cookies.token
         console.log(req.cookies.token);
         const id = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
@@ -17,16 +17,23 @@ export const refreshToken = async (req, res, next) => {
             const [verifyUser] = await user.user(id);
             const userInfo = verifyUser[0];
 
-            res.status(200).json(
-                {
-                    isLogin: true
-                }
-            )
-        } 
+            res.status(200).json({
+                id: userInfo.id,
+                email: userInfo.email,
+                isAuth: true,
+                firstName: userInfo.firstName,
+                lastName: userInfo.lastName,
+                role: userInfo.role,
+                isVerified: userInfo.isVerified,
+                phoneNumber: userInfo.phoneNumber,
+                address: userInfo.address,
+                cart: userInfo.cart,
+            })
+        }
 
     } catch (error) {
-        
+
     }
 
-    
+
 }

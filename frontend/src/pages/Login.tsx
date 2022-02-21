@@ -4,6 +4,7 @@ import { useDispatch, useSelector, RootStateOrAny} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../services/auth/login/loginActions';
 import loginImage from '../assets/login.jpg'
+import { getCartItem } from '../services/cart/cartAction';
 
 
 type Props = {};
@@ -16,7 +17,7 @@ export const Login = (props: Props) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
-  const { loading, userInfo, error } = userDetail;
+  const {  userInfo } = userDetail;
 
 
   const login = () => {
@@ -26,9 +27,13 @@ export const Login = (props: Props) => {
   }
 
   useEffect(() => {
-    if (userInfo) {
-      navigate(userInfo.redirect)
+ 
+    const reqLogin = async() => {
+      if (userInfo) {
+        navigate(userInfo.redirect) 
+      }
     }
+    reqLogin()
   }, [userInfo, navigate])
 
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import star from '../assets/star.png';
 
 interface Props {
     

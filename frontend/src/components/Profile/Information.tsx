@@ -6,24 +6,29 @@ import { DynamicInput } from "../DynamicInput";
 type Props = {};
 
 export const Information = (props: Props) => {
+ 
   const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
-  const { userInfo, loading } = userDetail;
+  const { userInfo, userloading } = userDetail;
 
-  useEffect(() => {
-    if (!loading) {
-      setFirstName(userInfo.firstName);
-      setLastName(userInfo.lastName);
-      setEmail(userInfo.email);
-      setPhoneNumber(userInfo.phoneNumber);
-    }
-  }, [loading]);
 
   const [editMode, setEditMode] = useState<boolean>(false);
-
+  
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
+  
+  useEffect(() => {
+    console.log(userInfo, userloading)
+    if (!userloading) {
+      setFirstName(userInfo.firstName);
+      setLastName(userInfo.lastName);
+      setEmail(userInfo.email);
+      setPhoneNumber(userInfo.phoneNumber);
+  
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userloading]);
 
   const updateUser = async () => {
     const id = userInfo.id;

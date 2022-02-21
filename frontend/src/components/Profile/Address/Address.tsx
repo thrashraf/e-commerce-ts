@@ -24,18 +24,18 @@ export const Address = (props: Props) => {
     const dispatch = useDispatch()
     const modalDetail = useSelector((state: RootStateOrAny) => state.modalReducers);
     const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
-    
-    const { userInfo } = userDetail;
+    const { userInfo, userloading } = userDetail;
     const { modal } = modalDetail
     
 
     useEffect(() => {
-
-            if (userInfo.address === null) return
+        console.log(userInfo, userloading);
+        if (!userloading && userInfo.address) {
             setUserAddress(userInfo.address)
             console.log(userAddress);
+        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [userloading])
 
     // * create new address
     const openAddAddressModal = () => {
