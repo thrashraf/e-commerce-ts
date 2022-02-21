@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Summary } from "../Summary";
 
 type Props = {
@@ -45,15 +46,18 @@ export const OrderSummary = (props: Props) => {
               />
             )}
         </section>
+        
+        <Link to='/shipping'>
+          <section className="flex w-full absolute bottom-0 py-2 px-5 justify-between bg-blue-500 rounded-xl my-5 cursor-pointer hover:bg-blue-300 text-white">
+            <span>
+              ${props.order.length <= 0 ? "0.00" : calculateTotalPrice()}
+            </span>
+            <p>
+              checkout <i className="fa-solid fa-arrow-right-long ml-3"></i>
+            </p>
+          </section>
+        </Link>
 
-        <section className="flex w-full absolute bottom-0 py-2 px-5 justify-between bg-blue-500 rounded-xl my-5 cursor-pointer hover:bg-blue-300 text-white">
-          <span>
-            ${props.order.length <= 0 ? "0.00" : calculateTotalPrice()}
-          </span>
-          <p>
-            checkout <i className="fa-solid fa-arrow-right-long ml-3"></i>
-          </p>
-        </section>
       </div>
     </Summary>
   );
