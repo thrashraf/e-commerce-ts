@@ -1,0 +1,67 @@
+import React, { useState } from "react";
+import { Summary } from "../Summary";
+import { shippingProvider } from "../../../assets/shippingMethod";
+
+type Props = {};
+
+export const ShippingSummary = (props: Props) => {
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  const [selectedItem, setSelectedItem] = useState<number>()
+
+  const selectProvider = (currentTabs: number) => (e: React.MouseEvent) => {
+    setSelectedItem(currentTabs)
+  }
+
+  const isActive = (currentTabs: number) => {
+    if (currentTabs === selectedItem) {
+        return {
+            backgroundColor: '#eff6ff',
+            border: '1.5px solid #0079fe'
+        }
+    } 
+  }
+
+  return (
+    <Summary>
+      <div className="h-[520px] py-5 relative">
+        {shippingProvider.map((company, index) => {
+          return (
+            <div className={`flex bg-gray-50 p-3 rounded-lg mb-3 cursor-pointer`} style={isActive(index)} onClick={selectProvider(index)}>
+              <img
+                src={company.image}
+                alt={company.name}
+                className="object-contain h-[70px] w-[100px] rounded-lg"
+              />
+              <section className="text-xs ml-5 flex flex-col justify-around w-[170px]">
+                <p>{company.name}</p>
+                <section className="flex justify-between text-gray-500">
+                  <p>{company.type}</p>
+                  <p>{`${days[new Date().getDay() + company.expectArrive]}, ${
+                    new Date().getDate() + company.expectArrive
+                  }`}</p>
+                </section>
+                <p className="font-medium">${company.cost}</p>
+              </section>
+            </div>
+          );
+        })}
+
+        <section className="flex w-full absolute bottom-0 py-2 px-5 justify-between bg-blue-500 rounded-xl my-5 cursor-pointer hover:bg-blue-300 text-white">
+          <span>$1000.00</span>
+          <p>
+            checkout <i className="fa-solid fa-arrow-right-long ml-3"></i>
+          </p>
+        </section>
+      </div>
+    </Summary>
+  );
+};

@@ -3,7 +3,7 @@ import { useDispatch, useSelector, RootStateOrAny } from "react-redux";
 import { listProductById } from "../services/product/productById/productDetailActions";
 import star from "../assets/star.png";
 import { Spinner } from "../components/Spinner/Spinner";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { addToCart } from "../services/cart/cartAction";
 
 type Props = {};
@@ -14,16 +14,15 @@ const Product = (props: Props) => {
 
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
-  const productByIdList = useSelector(
-    (state: RootStateOrAny) => state.productDetailReducers
-  );
-  const { productById } = productByIdList;
-
+  const productByIdList = useSelector((state: RootStateOrAny) => state.productDetailReducers);
   const cartDetail = useSelector((state: RootStateOrAny) => state.cartReducer);
-  const { cart, cartLoading } = cartDetail;
+  const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
 
-  //console.log(cart);
+  const { productById } = productByIdList;
+  const { cart, cartLoading } = cartDetail;
+  const { userInfo } = userDetail;
 
   useEffect(() => {
     dispatch(listProductById(id));
@@ -41,6 +40,8 @@ const Product = (props: Props) => {
 
   const addItemHandler = () => {
     
+    if (!userInfo) navigate('/login')
+
     const item = cart.findIndex((item: any) => item.id === productById.id);
     console.log(item);
 

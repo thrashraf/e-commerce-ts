@@ -12,6 +12,7 @@ import { SignUp } from './pages/SignUp';
 import { Profile } from './pages/Profile';
 import Product from './pages/Product';
 import { Cart } from './pages/Cart';
+import { Shipping } from './pages/Shipping';
 
 
 function App() {
@@ -24,11 +25,9 @@ function App() {
   useEffect(() => {
 
     const setup = async() => {
-
       dispatch(refreshAction())
       dispatch(getCartItem())
     }
-
     setup()
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -44,7 +43,6 @@ function App() {
       
       {/* Backdrop */}
       <div  onClick={closeBackdrop} className={`w-full h-full bg-[#00000070] z-10 absolute m-0 p-0 left-0 top-0 ${modal ? 'block' : 'hidden'} `}  /> 
-      
       <BrowserRouter>
       <Navbar />
         <Routes>
@@ -54,6 +52,7 @@ function App() {
           <Route path='/signup' element={<SignUp />} />
           <Route path='/profile/:id' element={<Profile />} />
           <Route path='/cart' element={<Cart />} />
+          <Route path='/shipping' element={<Shipping />} />
         </Routes>
     </BrowserRouter>
     </div>
