@@ -3,7 +3,6 @@ import './styles/index.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector, RootStateOrAny } from 'react-redux';
 import { refreshAction } from './services/auth/refreshAction';
-import { getUserInformation } from './services/user/userAction';
 import { getCartItem } from './services/cart/cartAction';
 import { closeModal } from './services/modal/modalActions';
 import {Navbar}  from './components/Navbar'
@@ -18,10 +17,8 @@ import { Cart } from './pages/Cart';
 function App() {
   
   const dispatch = useDispatch()
-  const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
   const modalDetail = useSelector((state: RootStateOrAny) => state.modalReducers);
 
-  const { user } = userDetail;
   const { modal } = modalDetail;
 
   useEffect(() => {
@@ -29,7 +26,6 @@ function App() {
     const setup = async() => {
 
       dispatch(refreshAction())
-      dispatch(getUserInformation())
       dispatch(getCartItem())
     }
 
@@ -37,9 +33,6 @@ function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  if (user) {
-    console.log(user);
-  }
 
   const closeBackdrop = () => {
     dispatch(closeModal())

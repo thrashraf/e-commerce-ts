@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, RootStateOrAny } from "react-redux";
 import logo from "../assets/logo.png";
@@ -16,7 +16,7 @@ export const Navbar: FC = (props) => {
   const cartDetail = useSelector((state: RootStateOrAny) => state.cartReducer);
   const { cart } = cartDetail;
 
-  
+  //console.log(userInfo);
 
   return (
     <div
@@ -50,7 +50,7 @@ export const Navbar: FC = (props) => {
 
         <section className="relative">
           <Link to="/cart">
-            {cart ? (
+            {cart && cart.length > 0 ? (
               <span className=" px-[6px] py-[2px] text-white bg-[#F90716] rounded-full absolute left-3 bottom-3 text-[8px] cursor-pointer ">
                 {cart.length}
               </span>
