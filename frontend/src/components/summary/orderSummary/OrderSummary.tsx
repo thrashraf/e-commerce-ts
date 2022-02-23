@@ -1,12 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Summary } from "../Summary";
+import toast, { Toaster } from 'react-hot-toast';
 
 type Props = {
-  order: any[];
+  order: any[],
+  createOrder: any
 };
 
 export const OrderSummary = (props: Props) => {
+
+  const navigate = useNavigate()
+
   const calculateTotalPrice = () => {
     if (props.order.length > 0) {
       return props.order
@@ -15,8 +20,16 @@ export const OrderSummary = (props: Props) => {
     }
   };
 
+  const checkoutHandler = () => {
+    props.createOrder()
+    props.order.length > 0 ? 
+    navigate('/shipping') 
+    : toast.error('select item to continue')
+  }
+
   return (
     <Summary>
+      <Toaster />
       <div className="h-[425px] relative">
         <h1 className="font-medium py-5 text-blue-500">Order Summary</h1>
 
@@ -47,8 +60,7 @@ export const OrderSummary = (props: Props) => {
             )}
         </section>
         
-        <Link to='/shipping'>
-          <section className="flex w-full absolute bottom-0 py-2 px-5 justify-between bg-blue-500 rounded-xl my-5 cursor-pointer hover:bg-blue-300 text-white">
+          <section className="flex w-full absolute bottom-0 py-2 px-5 justify-between bg-blue-500 rounded-xl my-5 cursor-pointer hover:bg-blue-300 text-white" onClick={checkoutHandler}>
             <span>
               ${props.order.length <= 0 ? "0.00" : calculateTotalPrice()}
             </span>
@@ -56,7 +68,6 @@ export const OrderSummary = (props: Props) => {
               checkout <i className="fa-solid fa-arrow-right-long ml-3"></i>
             </p>
           </section>
-        </Link>
 
       </div>
     </Summary>

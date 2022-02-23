@@ -7,10 +7,10 @@ export const shippingProvider = [
     cost: 5.00,
   },
   {
-    image: '/images/fedex.png',
-    name: "FedEx",
-    type: "express",
-    expectArrive: 4,
+    image: '/images/poslaju.png',
+    name: "POS Laju",
+    type: "standard",
+    expectArrive: 5,
     cost: 7.00,
   },
   {

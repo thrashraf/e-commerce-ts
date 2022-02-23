@@ -1,8 +1,9 @@
 import { Spinner } from "../components/Spinner/Spinner";
 import { OrderSummary } from "../components/summary/orderSummary/OrderSummary";
 import { CartItem } from "../components/CartItem";
-import { RootStateOrAny, useSelector } from "react-redux";
+import { RootStateOrAny, useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+import { checkout } from '../services/order/orderAction';
 
 type Props = {};
 
@@ -10,11 +11,13 @@ export const Cart = (props: Props) => {
   const [userCart, setUserCart] = useState<any[]>([]);
   const [order, setOrder] = useState<any[]>([]);
 
+  const dispatch = useDispatch()
+
   const cartDetail = useSelector((state: RootStateOrAny) => state.cartReducer);
   const { cart, cartLoading } = cartDetail;
 
   useEffect(() => {
-    console.log(cart, cartLoading);
+    //console.log(cart, cartLoading);
     if (!cartLoading) {
       if (!cart) return;
       //console.log(cart);
@@ -33,6 +36,10 @@ export const Cart = (props: Props) => {
       setOrder(currentOrder);
     }
   };
+
+  const requestCreateOrder = () => {
+    dispatch(checkout(order))
+  }
 
   return (
     <div className="max-w-7xl px-10 m-auto flex pt-10 relative">
@@ -96,7 +103,7 @@ export const Cart = (props: Props) => {
       <div
         className={`w-[35%] mb-10 fixed right-0  ${userCart.length > 0 ? "block" : "hidden"}`}
       >
-        <OrderSummary order={order} />
+        <OrderSummary order={order} createOrder={requestCreateOrder}/>
       </div>
     </div>
   );

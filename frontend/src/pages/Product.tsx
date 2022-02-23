@@ -10,7 +10,7 @@ type Props = {};
 
 const Product = (props: Props) => {
   
-  const [userCart, setUserCart] = useState<any[]>([]);
+  const [quantity, setQuantity] = useState<number>(1);
 
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -21,23 +21,28 @@ const Product = (props: Props) => {
   const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
 
   const { productById } = productByIdList;
-  const { cart, cartLoading } = cartDetail;
+  const { cart } = cartDetail;
   const { userInfo } = userDetail;
+  
+  let optionValue: any = [];
+
+  const mapOptions = () => {
+    for (let index = 1; index <= productById.countInStock; index++) {
+      optionValue.push(index)
+    }    
+  }
 
   useEffect(() => {
     dispatch(listProductById(id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
-
-  useEffect(() => {
-    if (!cartLoading) {
-      if (!cart) return  
-      //console.log(cart);
-      setUserCart(cart);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cartLoading]);
-
+  
+  mapOptions()
+  
+  const quantityHandler = (e: any) => {
+    setQuantity(parseInt(e.target.value))
+  }
+  
   const addItemHandler = () => {
     
     if (!userInfo) navigate('/login')
@@ -46,15 +51,17 @@ const Product = (props: Props) => {
     console.log(item);
 
     if (item >= 0) {
-      cart[item].quantity += 1;
+      cart[item].quantity += quantity;
       dispatch(addToCart(cart));
     } else {
-      const cartItem = { ...productById, quantity: 1 };
+      const cartItem = { ...productById, quantity: quantity };
       console.log(cartItem);
       cart.push(cartItem);
       dispatch(addToCart(cart));
       }
   }
+
+
 
   return productById.length !== 0 ? (
     <div className="grid grid-cols-2 max-w-7xl m-auto px-10 gap-20 py-10">
@@ -85,17 +92,8 @@ const Product = (props: Props) => {
         <section className="w-[200px] flex justify-between mb-10">
           <p>Quantity</p>
 
-          <select className="w-[60px] border-gray-500 border-[1.5px] rounded-md px-2 focus:outline-none">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
+          <select className="w-[60px] border-gray-500 border-[1.5px] rounded-md px-2 focus:outline-none" onChange={(e) => quantityHandler(e)}>
+            {optionValue.map((item:any) => <option value={item}>{item}</option>)}
           </select>
         </section>
 
