@@ -1,0 +1,7 @@
+
+export const OrderConstant = {
+    CHECKOUT: 'CHECKOUT',
+    REQUEST_CREATE_ORDER: 'REQUEST_CREATE_ORDER',
+    CREATE_ORDER: 'CREATE_ORDER'   ,
+    FAIL: 'FAIL'
+}
