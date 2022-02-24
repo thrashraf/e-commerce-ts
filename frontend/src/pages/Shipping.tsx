@@ -16,7 +16,7 @@ export const Shipping = (props: Props) => {
   const { userInfo } = userDetail;
 
   const orderDetail = useSelector((state: RootStateOrAny) => state.orderReducers);
-  const { order } = orderDetail;
+  const { order, success, id } = orderDetail;
   
   const [option, setOption] = useState<number>();
 
@@ -26,27 +26,37 @@ export const Shipping = (props: Props) => {
   const [state, setState] = useState<string>("");
   const [courier, setCourier] = useState<any>()
 
+  const [orderItem, setOrderItem] = useState<any[]>();
+
   const selectOptionHandler = (e: any) => {
     setOption(e.target.value)
   } 
 
   useEffect(() => {
-    
     if (userInfo && option) {
-
       if (userInfo.address.length <= 0) return
       setFullName(userInfo.address[option].fullName)
       setPhoneNumber(userInfo.address[option].phoneNumber)
       setState(userInfo.address[option].state)
       setAddress(userInfo.address[option].address)
+      setOrderItem(order)
     } else {
       setFullName('')
       setPhoneNumber(0)
       setState('')
       setAddress('')
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [option, userInfo])
 
+  useEffect(() => {
+    if (success) {
+      toast.success('Successfully Create Order 🎉')
+      navigate(`/payment/${id}`)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [success])
+ 
   const checkoutShipping = async () => {
     console.log(order)
     if (!fullName && !phoneNumber && !address && !state && !courier) return
@@ -59,16 +69,18 @@ export const Shipping = (props: Props) => {
       state, 
       courier,
       isDelivered: false,
-      isPay: false
+      isPay: false,
+      totalPrice: totalPrice
     }
 
     console.log(currentOrder)
     dispatch(createOrder(currentOrder))
-    
-    navigate('/payment')
   }
 
   console.log(order);
+ 
+  const totalPrice : number = orderItem ? orderItem
+    .reduce((sum: number, { price, quantity }: { price: number, quantity: number}) =>  (sum + price * quantity) + (courier ? courier.price : 0), 0) : null
 
   return (
     <div className="max-w-7xl px-10 m-auto flex justify-between pb-20 pt-5">
@@ -123,7 +135,7 @@ export const Shipping = (props: Props) => {
       </div>
 
       <div className="w-[35%] mt-5">
-        <ShippingSummary placeOrder={checkoutShipping} courier={courier} setCourier={setCourier} totalPrice={order} />
+        <ShippingSummary placeOrder={checkoutShipping} courier={courier} setCourier={setCourier} totalPrice={totalPrice} />
       </div>
     </div>
   );

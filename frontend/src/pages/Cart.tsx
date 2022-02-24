@@ -49,12 +49,8 @@ export const Cart = () => {
     }
   };
 
-  const totalPrice : number = order
-    .reduce((sum, { price, quantity }) => sum + price * quantity, 0)
-    .toFixed(2);
-
   const requestCreateOrder = () => {
-    dispatch(checkout([totalPrice, ...order]))
+    dispatch(checkout([...order]))
   }
 
   return (

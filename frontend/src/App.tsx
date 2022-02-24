@@ -54,7 +54,7 @@ function App() {
           <Route path='/profile/:id' element={<Profile />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/shipping' element={<Shipping />} />
-          <Route path='/payment' element={<Payment />} />
+          <Route path='/payment/:id' element={<Payment />} />
         </Routes>
     </BrowserRouter>
     </div>
