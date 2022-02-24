@@ -6,7 +6,9 @@ import { days } from '../../../assets/days'
 type Props = {
   placeOrder: any,
   courier: any,
-  setCourier: any
+  setCourier: any,
+  totalPrice: string
+  
 };
 
 export const ShippingSummary = (props: Props) => {
@@ -53,9 +55,9 @@ export const ShippingSummary = (props: Props) => {
         })}
 
         <section className="flex w-full absolute bottom-0 py-2 px-5 justify-between bg-blue-500 rounded-xl my-5 cursor-pointer hover:bg-blue-300 text-white" onClick={props.placeOrder}>
-          <span>$1000.00</span>
+          <span>${props.courier ? parseFloat(props.totalPrice[0]) + props.courier.price : parseFloat(props.totalPrice)}</span>
           <p>
-            place order <i className="fa-solid fa-arrow-right-long ml-3"></i>
+            Confirm <i className="fa-solid fa-arrow-right-long ml-3"></i>
           </p>
         </section>
       </div>

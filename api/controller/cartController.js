@@ -31,7 +31,7 @@ export const addItemToCart = async (req, res, next) => {
         const cookie = req.cookies.token
         
         const id = jwt.verify(cookie, process.env.ACCESS_TOKEN_SECRET);
-        //console.log(item)
+        console.log(cartItems)
 
         const [productById] = await cart.addToCart(id, cartItems)
         //console.log(productById);

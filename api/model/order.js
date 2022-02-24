@@ -1,25 +1,39 @@
 import db from '../config/db.js';
 
-class cart {
+class orderQuery {
 
-    
-    static createOrder(id, order) {
+    static createOrder(orderId, userID, orderItem, fullName, address, phoneNumber, state, postcode) {
 
-        console.log(order)
+        
 
         const sql = `
-        
-        UPDATE
-            users
-        SET
-            order = '${order}'
-        WHERE
-            id = '${id}'
+        INSERT INTO
+        orders (
+        orderID,
+        userID,
+        orderItem,
+        isPaid,
+        isDelivered,
+        fullName,
+        address,
+        phoneNumber,
+        region
+        )
+        VALUES(
+            '${orderId}',
+            '${userID}',
+            '${orderItem}',
+            ${0},
+            ${0},
+            '${fullName}',
+            '${address}',
+            '${phoneNumber}',
+            '${state}'
+        );
         `
-
         return db.execute(sql);
     }
 }
 
 
-export default cart
+export default orderQuery
