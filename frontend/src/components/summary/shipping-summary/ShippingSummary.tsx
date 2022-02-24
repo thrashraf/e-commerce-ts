@@ -7,7 +7,7 @@ type Props = {
   placeOrder: any,
   courier: any,
   setCourier: any,
-  totalPrice: string
+  totalPrice: number
   
 };
 
@@ -55,7 +55,7 @@ export const ShippingSummary = (props: Props) => {
         })}
 
         <section className="flex w-full absolute bottom-0 py-2 px-5 justify-between bg-blue-500 rounded-xl my-5 cursor-pointer hover:bg-blue-300 text-white" onClick={props.placeOrder}>
-          <span>${props.courier ? parseFloat(props.totalPrice[0]) + props.courier.price : parseFloat(props.totalPrice)}</span>
+          ${props.totalPrice}
           <p>
             Confirm <i className="fa-solid fa-arrow-right-long ml-3"></i>
           </p>

@@ -20,13 +20,15 @@ export const createOrder = (order: any) => async (dispatch: any) => {
       { withCredentials: true }
     )
 
-    const orderData = requestData.data;
-    console.log(orderData);
+    //console.log(requestData)
+    const orderData = requestData.data.id;
+    //console.log(orderData);
 
     dispatch({
       type: OrderConstant.CREATE_ORDER,
       payload: orderData,
     });
+
   } catch (error) {
     dispatch({
       type: OrderConstant.FAIL,
@@ -34,3 +36,21 @@ export const createOrder = (order: any) => async (dispatch: any) => {
     });
   }
 };
+
+export const getOrderDetails = (id: string) => async (dispatch: any) => {
+  
+  dispatch({type: OrderConstant.REQUEST_ORDER_DETAIL})
+  const requestOrder: any = await axios.get(
+    `http://localhost:5000/api/order/getOrder/${id}`,
+    { withCredentials: true }
+  )
+
+  console.log(requestOrder)
+
+  dispatch({
+    type: OrderConstant.SUCCESS_ORDER_DETAIL,
+    payload: requestOrder.data,
+  });
+};
+
+
