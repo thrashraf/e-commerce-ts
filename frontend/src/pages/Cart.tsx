@@ -5,9 +5,20 @@ import { RootStateOrAny, useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { checkout } from '../services/order/orderAction';
 
-type Props = {};
+interface item {
+  id: number,
+  name: string
+  description: string
+  brand: string
+  category: string
+  price: number
+  countInStock: number
+  rating: number
+  numReview: number
+  sold: number
+};
 
-export const Cart = (props: Props) => {
+export const Cart = () => {
   const [userCart, setUserCart] = useState<any[]>([]);
   const [order, setOrder] = useState<any[]>([]);
 
@@ -26,7 +37,8 @@ export const Cart = (props: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cartLoading]);
 
-  const handleChange = (e: any, item: any) => {
+  const handleChange = (e: any, item: item) => {
+
     if (e.target.checked) {
       setOrder((order) => [...order, item]);
     } else {
@@ -37,8 +49,12 @@ export const Cart = (props: Props) => {
     }
   };
 
+  const totalPrice : number = order
+    .reduce((sum, { price, quantity }) => sum + price * quantity, 0)
+    .toFixed(2);
+
   const requestCreateOrder = () => {
-    dispatch(checkout(order))
+    dispatch(checkout([totalPrice, ...order]))
   }
 
   return (
