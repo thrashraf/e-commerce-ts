@@ -77,8 +77,6 @@ export const Shipping = (props: Props) => {
     dispatch(createOrder(currentOrder))
   }
 
-  console.log(order);
- 
   const totalPrice : number = orderItem ? orderItem
     .reduce((sum: number, { price, quantity }: { price: number, quantity: number}) =>  (sum + price * quantity) + (courier ? courier.price : 0), 0) : null
 

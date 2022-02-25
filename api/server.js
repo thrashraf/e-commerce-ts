@@ -7,6 +7,7 @@ import productRoute from './router/productsRoute.js';
 import userRoute from './router/usersRoute.js';
 import cartRoute from './router/cartRoute.js';
 import orderRoute from './router/orderRoute.js';
+import  paymentRoute from './router/paymentRoute.js';
 
 
 const app = express();
@@ -23,7 +24,7 @@ app.use(bodyParser.json());
 //support parsing of application/x-www-form-urlencoded post data
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/api', productRoute, userRoute, cartRoute, orderRoute);
+app.use('/api', productRoute, userRoute, cartRoute, orderRoute, paymentRoute);
 
 
 app.listen(port, console.log(`server running on port ${port}`))
