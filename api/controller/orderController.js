@@ -22,7 +22,7 @@ export const createOrder = async (req, res, next) => {
         })
 
         console.log(userOrder)
-        
+
         res.status(200).json({
             id: orderId,
         })
@@ -40,7 +40,7 @@ export const getOrder = async (req, res, next) => {
 
         const id = req.params.id
         const [orderDetail] = await orderQuery.getOrder(id)
-        
+
         if (!orderDetail[0]) return res.status(400).json({
             message: 'error lol'
         })
@@ -53,6 +53,7 @@ export const getOrder = async (req, res, next) => {
             fullName: orderDetail[0].fullName,
             phoneNumber: orderDetail[0].phoneNumber,
             address: orderDetail[0].address,
+            totalPrice: orderDetail[0].totalPrice
         })
 
     } catch (error) {
