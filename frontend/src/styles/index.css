@@ -736,6 +736,10 @@ video {
     margin-left: 0.75rem
 
 }
+.mr-4{
+    margin-right: 1rem
+
+}
 .block{
     display: block
 
@@ -802,6 +806,18 @@ video {
 }
 .h-\[520px\]{
     height: 520px
+
+}
+.h-\[50\%\]{
+    height: 50%
+
+}
+.h-\[40\%\]{
+    height: 40%
+
+}
+.h-\[60\%\]{
+    height: 60%
 
 }
 .w-full{
@@ -896,6 +912,18 @@ video {
     width: 170px
 
 }
+.w-\[50\%\]{
+    width: 50%
+
+}
+.w-\[40\%\]{
+    width: 40%
+
+}
+.w-\[50px\]{
+    width: 50px
+
+}
 .max-w-sm{
     max-width: 24rem
 
@@ -910,6 +938,10 @@ video {
 }
 .max-w-md{
     max-width: 28rem
+
+}
+.scale-x-105{
+    --tw-scale-x: 1.05
 
 }
 .cursor-pointer{
@@ -1143,12 +1175,12 @@ video {
     padding: 1.25rem
 
 }
-.p-2{
-    padding: 0.5rem
-
-}
 .p-3{
     padding: 0.75rem
+
+}
+.p-2{
+    padding: 0.5rem
 
 }
 .px-1{
@@ -1221,6 +1253,11 @@ video {
     padding-right: 15%
 
 }
+.px-5{
+    padding-left: 1.25rem;
+    padding-right: 1.25rem
+
+}
 .py-10{
     padding-top: 2.5rem;
     padding-bottom: 2.5rem
@@ -1241,11 +1278,6 @@ video {
     padding-bottom: 25px
 
 }
-.px-5{
-    padding-left: 1.25rem;
-    padding-right: 1.25rem
-
-}
 .py-4{
     padding-top: 1rem;
     padding-bottom: 1rem
@@ -1254,6 +1286,11 @@ video {
 .py-5{
     padding-top: 1.25rem;
     padding-bottom: 1.25rem
+
+}
+.px-16{
+    padding-left: 4rem;
+    padding-right: 4rem
 
 }
 .pt-10{
@@ -1278,6 +1315,10 @@ video {
 }
 .pb-10{
     padding-bottom: 2.5rem
+
+}
+.pt-20{
+    padding-top: 5rem
 
 }
 .text-center{
@@ -1323,6 +1364,16 @@ video {
 }
 .text-\[10px\]{
     font-size: 10px
+
+}
+.text-4xl{
+    font-size: 2.25rem;
+    line-height: 2.5rem
+
+}
+.text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem
 
 }
 .font-medium{
@@ -1426,6 +1477,11 @@ video {
 
 }
 .focus\:outline-none:focus{
+    outline: 2px solid transparent;
+    outline-offset: 2px
+
+}
+.active\:outline-none:active{
     outline: 2px solid transparent;
     outline-offset: 2px
 

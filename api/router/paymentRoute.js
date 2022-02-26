@@ -1,9 +1,10 @@
 import express from 'express';
-import { paymentIntent } from '../controller/paymentController.js';
+import { paymentIntent, config } from '../controller/paymentController.js';
 
 const paymentRoute = express.Router();
 
-paymentRoute.get('/v1/payment_intents', paymentIntent);
+paymentRoute.post('/v1/payment_intents', paymentIntent);
+paymentRoute.get('/v1/config', config);
 
 
 export default paymentRoute;
