@@ -93,8 +93,6 @@ export const Address = (props: Props) => {
 
         toast.success('successful Delete')
     }
-
-
     
   return <div className=' mt-5'>
 
@@ -116,8 +114,6 @@ export const Address = (props: Props) => {
         setFullName={setFullName} setPhoneNumber={setPhoneNumber} setState={setState} setAddress={setAddress} save={updateAddress.bind(this, updateIndex)} />
         )  : null}
     </section> 
-
-    
 
     <section className='flex justify-between pb-5'>
         <Toaster />
