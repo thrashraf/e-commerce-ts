@@ -14,6 +14,7 @@ import Product from './pages/Product';
 import { Cart } from './pages/Cart';
 import { Shipping } from './pages/Shipping';
 import { Payment } from './pages/Payment';
+import { PaymentUpdate } from './pages/PaymentUpdate';
 
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
           <Route path='/cart' element={<Cart />} />
           <Route path='/shipping' element={<Shipping />} />
           <Route path='/payment/:id' element={<Payment />} />
+          <Route path='/fpx' element={<PaymentUpdate />} />
         </Routes>
     </BrowserRouter>
     </div>

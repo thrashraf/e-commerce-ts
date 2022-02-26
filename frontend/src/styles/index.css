@@ -716,6 +716,10 @@ video {
     margin-left: 0.25rem
 
 }
+.mr-4{
+    margin-right: 1rem
+
+}
 .mt-20{
     margin-top: 5rem
 
@@ -734,10 +738,6 @@ video {
 }
 .ml-3{
     margin-left: 0.75rem
-
-}
-.mr-4{
-    margin-right: 1rem
 
 }
 .block{
@@ -784,6 +784,14 @@ video {
     height: 100vh
 
 }
+.h-\[60\%\]{
+    height: 60%
+
+}
+.h-\[50\%\]{
+    height: 50%
+
+}
 .h-\[170px\]{
     height: 170px
 
@@ -808,16 +816,16 @@ video {
     height: 520px
 
 }
-.h-\[50\%\]{
-    height: 50%
+.h-\[200px\]{
+    height: 200px
 
 }
-.h-\[40\%\]{
-    height: 40%
+.h-\[300px\]{
+    height: 300px
 
 }
-.h-\[60\%\]{
-    height: 60%
+.h-\[150px\]{
+    height: 150px
 
 }
 .w-full{
@@ -864,8 +872,16 @@ video {
     width: 35%
 
 }
+.w-\[50px\]{
+    width: 50px
+
+}
 .w-\[60\%\]{
     width: 60%
+
+}
+.w-\[50\%\]{
+    width: 50%
 
 }
 .w-\[200px\]{
@@ -912,16 +928,16 @@ video {
     width: 170px
 
 }
-.w-\[50\%\]{
-    width: 50%
+.w-\[65\%\]{
+    width: 65%
 
 }
-.w-\[40\%\]{
-    width: 40%
+.w-\[63\%\]{
+    width: 63%
 
 }
-.w-\[50px\]{
-    width: 50px
+.w-\[30\%\]{
+    width: 30%
 
 }
 .max-w-sm{
@@ -938,10 +954,6 @@ video {
 }
 .max-w-md{
     max-width: 28rem
-
-}
-.scale-x-105{
-    --tw-scale-x: 1.05
 
 }
 .cursor-pointer{
@@ -1288,11 +1300,6 @@ video {
     padding-bottom: 1.25rem
 
 }
-.px-16{
-    padding-left: 4rem;
-    padding-right: 4rem
-
-}
 .pt-10{
     padding-top: 2.5rem
 
@@ -1315,10 +1322,6 @@ video {
 }
 .pb-10{
     padding-bottom: 2.5rem
-
-}
-.pt-20{
-    padding-top: 5rem
 
 }
 .text-center{
@@ -1364,16 +1367,6 @@ video {
 }
 .text-\[10px\]{
     font-size: 10px
-
-}
-.text-4xl{
-    font-size: 2.25rem;
-    line-height: 2.5rem
-
-}
-.text-xl{
-    font-size: 1.25rem;
-    line-height: 1.75rem
 
 }
 .font-medium{
