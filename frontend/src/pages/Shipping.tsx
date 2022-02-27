@@ -84,8 +84,10 @@ export const Shipping = (props: Props) => {
     const latestCart = cartItem?.filter(
       (arr: any) => !order.find(({ id }: { id: number }) => arr.id === id)
     );
-    setCartItem(latestCart);
-    dispatch(addToCart(cartItem));
+    console.log(latestCart);
+    await setCartItem(latestCart);
+    //console.log(cartItem);
+    dispatch(addToCart(latestCart));
 
     dispatch(createOrder(currentOrder));
   };

@@ -5,6 +5,7 @@ import { Information } from '../components/Profile/Information';
 import { PersonalSideBar } from '../components/PersonalSideBar';
 import { Address } from '../components/Profile/Address/Address';
 import { Setting } from '../components/Profile/Setting';
+import { Purchase } from '../components/Profile/Purchase';
 
 type Props = {};
 
@@ -45,6 +46,10 @@ export const Profile = (props: Props) => {
         </section>
 
         <section className='w-full' style={isSectionActive(3)}>
+          <Purchase />
+        </section>
+
+        <section className='w-full' style={isSectionActive(4)}>
           <Setting />
         </section>
 
