@@ -48,8 +48,18 @@ export const PersonalSideBar = (props: Props) => {
       </section>
     </aside>
 
-
     <aside className='flex my-5  border border-gray-300 rounded-xl px-3 py-3 cursor-pointer'  style={isActive(3)} onClick={changeTabs(3)}>
+      <div className='bg-blue-500 px-3 py-3 rounded-lg mr-5'>
+        <img src='/images/purchase.png' alt="purchase" className=' w-[25px] h-[25px]'/>
+      </div>
+      <section>
+        <h1>Purchase Item</h1>
+        <p className='text-[12px] mt-1 text-gray-400'>Purchase Item</p>
+      </section>
+    </aside>
+
+
+    <aside className='flex my-5  border border-gray-300 rounded-xl px-3 py-3 cursor-pointer'  style={isActive(4)} onClick={changeTabs(4)}>
       <div className='bg-blue-500 px-3 py-3 rounded-lg mr-5'>
         <img src={securityImage} alt="security" className=' w-[25px] h-[25px]' />
       </div>
@@ -59,7 +69,7 @@ export const PersonalSideBar = (props: Props) => {
       </section>
     </aside>
 
-    <aside className='flex my-5  border border-gray-300 rounded-xl px-3 py-3 cursor-pointer'  style={isActive(4)} onClick={changeTabs(4)}>
+    <aside className='flex my-5  border border-gray-300 rounded-xl px-3 py-3 cursor-pointer'  style={isActive(5)} onClick={changeTabs(5)}>
       <div className='bg-blue-500 px-3 py-3 rounded-lg mr-5'>
         <img src='/images/setting.png' alt="payment" className=' w-[25px] h-[25px]'/>
       </div>

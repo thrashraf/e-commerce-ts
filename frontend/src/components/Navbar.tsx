@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, RootStateOrAny } from "react-redux";
 import logo from "../assets/logo.png";
@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 
 export const Navbar: FC = (props) => {
   
+  const [orderItem, setOrderItem] = useState()
   
   const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
   const { userInfo } = userDetail;
@@ -20,8 +21,6 @@ export const Navbar: FC = (props) => {
   );
   const { order } = orderDetail;
   
-  console.log(location.pathname);
-
   return (
     <div
       className=" w-full justify-between h-16 items-center  max-w-7xl px-10 m-auto"
@@ -30,7 +29,9 @@ export const Navbar: FC = (props) => {
         location.pathname.toString() === "/signup" ||
         location.pathname.toString() === "/cart" ||
         location.pathname.toString() === "/shipping" ||
-        location.pathname.toString() === `/fpx`
+        location.pathname.toString() === `/fpx` ||
+        location.pathname.toString() === `/payment/:id`
+
           ? { display: "none" }
           : { display: "flex" }
       }
