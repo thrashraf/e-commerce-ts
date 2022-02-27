@@ -11,20 +11,26 @@ export const Navbar: FC = (props) => {
   const { userInfo } = userDetail;
 
   const location = useLocation();
-  const navigate = useNavigate()
-
+  
   const cartDetail = useSelector((state: RootStateOrAny) => state.cartReducer);
   const { cart } = cartDetail;
-  useEffect(() => {
 
-  }, [])
+  const orderDetail = useSelector(
+    (state: RootStateOrAny) => state.orderReducers
+  );
+  const { order } = orderDetail;
+  
+  console.log(location.pathname);
 
   return (
     <div
       className=" w-full justify-between h-16 items-center  max-w-7xl px-10 m-auto"
       style={
         location.pathname.toString() === "/login" ||
-        location.pathname.toString() === "/signup"
+        location.pathname.toString() === "/signup" ||
+        location.pathname.toString() === "/cart" ||
+        location.pathname.toString() === "/shipping" ||
+        location.pathname.toString() === `/fpx`
           ? { display: "none" }
           : { display: "flex" }
       }

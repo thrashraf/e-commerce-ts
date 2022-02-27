@@ -31,7 +31,7 @@ export const ShippingSummary = (props: Props) => {
 
   return (
     <Summary>
-      <div className="h-[520px] py-5 relative">
+      <div className="h-[450px] py-5 relative">
         {shippingProvider.map((company, index) => {
           return (
             <div key={index} className={`flex bg-gray-50 p-3 rounded-lg mb-3 cursor-pointer`} style={isActive(index)} onClick={selectProvider(index, company.name, company.cost)}>

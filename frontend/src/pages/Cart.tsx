@@ -115,7 +115,7 @@ export const Cart = () => {
       <div
         className={`w-[35%] mb-10 fixed right-0  ${userCart.length > 0 ? "block" : "hidden"}`}
       >
-        <OrderSummary order={order} createOrder={requestCreateOrder}/>
+        <OrderSummary order={order} createOrder={requestCreateOrder} isVisible={false}/>
       </div>
     </div>
   );

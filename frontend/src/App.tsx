@@ -38,6 +38,7 @@ function App() {
   const closeBackdrop = () => {
     dispatch(closeModal())
   }
+  
 
   return (
 

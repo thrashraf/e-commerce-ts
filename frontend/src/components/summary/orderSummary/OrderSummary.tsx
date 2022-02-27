@@ -5,7 +5,8 @@ import toast, { Toaster } from 'react-hot-toast';
 
 type Props = {
   order: any[],
-  createOrder: any
+  createOrder: any,
+  isVisible: boolean
 };
 
 export const OrderSummary = (props: Props) => {
@@ -60,7 +61,7 @@ export const OrderSummary = (props: Props) => {
             )}
         </section>
         
-          <section className="flex w-full absolute bottom-0 py-2 px-5 justify-between bg-blue-500 rounded-xl my-5 cursor-pointer hover:bg-blue-300 text-white" onClick={checkoutHandler}>
+          <section className={`${props.isVisible ? 'hidden' : 'flex'} w-full absolute bottom-0 py-2 px-5 justify-between bg-blue-500 rounded-xl my-5 cursor-pointer hover:bg-blue-300 text-white`} onClick={checkoutHandler}>
             <span>
               ${props.order.length <= 0 ? "0.00" : calculateTotalPrice()}
             </span>
