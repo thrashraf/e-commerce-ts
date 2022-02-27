@@ -24,7 +24,7 @@ useEffect(() => {
 
   return (
     paymentStatus ? paymentStatus === 'succeeded' ? (
-    <div className="px-10">
+    <div className="px-10 h-screen pt-10">
       <button
         className="w-[50px] flex items-center text-gray-400 font-medium mt-4 active:outline-none"
         onClick={() => navigate("/")}
@@ -38,7 +38,7 @@ useEffect(() => {
       </button>
 
       <div className="text-center pt-10 px-10">
-        <h1 className="text-2xl text-gray-500">Successful Payment ✔️</h1>
+        <h1 className="text-xl text-gray-500">Thankyou for shopping with us 🎉</h1>
         <img
           src="/images/success-payment.png"
           alt="success"

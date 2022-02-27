@@ -59,3 +59,8 @@ export const decrementQuantity = (quantity: number) => (dispatch: any) => {
     dispatch({type: cartConstant.DROP_QUANTITY})
 }
 
+
+export const stagingCart = () => {
+    
+}
+

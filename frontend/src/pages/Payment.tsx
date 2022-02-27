@@ -18,9 +18,8 @@ export const Payment = (props: Props) => {
   const dispatch = useDispatch();
   const stripe = useStripe();
   const elements = useElements();
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const query = new URLSearchParams(useLocation().search);
-  const params = new URLSearchParams(window.location.search);
 
   const orderDetail = useSelector(
     (state: RootStateOrAny) => state.orderReducers
@@ -87,40 +86,60 @@ export const Payment = (props: Props) => {
               <section className="mt-5">
                 <section className="grid grid-cols-2 gap-5">
                   <div>
-                    <p className="text-[12px] text-gray-500 mb-2">Full Name</p>
+                    <p className="text-[12px] text-gray-500 mb-1">Full Name</p>
                     <h1 className="text-lg px-6 py-3 bg-blue-50 rounded-lg">
                       {order.fullName}
                     </h1>
                   </div>
                   <div>
-                    <p className="text-[12px] text-gray-500 mb-2">Phone Number</p>
+                    <p className="text-[12px] text-gray-500 mb-1">
+                      Phone Number
+                    </p>
                     <h1 className="text-lg px-6 py-3 bg-blue-50 rounded-lg">
                       {order.phoneNumber}
                     </h1>
                   </div>
                 </section>
-                <div className="w-full bg-blue-50 rounded-lg h-[150px] mt-5 py-3 px-6">
-                  <span className="" >{order.address}</span>
+
+                <p className="text-[12px] text-gray-500 mb-1 mt-3">Address</p>
+                <div className="w-full bg-blue-50 rounded-lg h-[100px] py-3 px-6">
+                  <span className="">{order.address}</span>
                 </div>
               </section>
             </div>
 
-            <form onSubmit={paymentSubmitHandler}>
-              <div className="w-[200px] p-3 border border-gray-500 rounded-lg">
-                <FpxBankElement options={{ accountHolderType: "individual" }} />
-              </div>
+            <form onSubmit={paymentSubmitHandler} className="mt-10">
+              <section className="flex justify-between items-center">
+                <p className="font-medium text-lg">RM {order.totalPrice}</p>
+                <div className="w-[200px] p-3 border border-gray-500 rounded-lg">
+                  <FpxBankElement
+                    options={{ accountHolderType: "individual" }}
+                  />
+                </div>
+              </section>
 
               <button
                 type="submit"
-                className="px-5 py-1 bg-blue-500 rounded-md mt-10 text-white"
+                className="px-10 py-2 bg-gradient-to-r from-[#2c69d1]  to-[#0abcf9] rounded-md mt-14 text-white float-right transition-transform transform hover:scale-110"
               >
                 Pay
+              </button>
+              
+              <button
+                type="submit"
+                className="px-10 py-2 bg-white text-gray-500 rounded-md mt-14 float-right transition-transform transform hover:scale-110 mr-5"
+              >
+                Cancel
               </button>
             </form>
           </section>
 
           <section>
-            <OrderSummary order={orderItem} createOrder={null} />
+            <OrderSummary
+              order={orderItem}
+              createOrder={null}
+              isVisible={true}
+            />
           </section>
         </div>
       ) : (

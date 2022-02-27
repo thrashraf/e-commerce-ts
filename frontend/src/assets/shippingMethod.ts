@@ -7,13 +7,6 @@ export const shippingProvider = [
     cost: 5.00,
   },
   {
-    image: '/images/poslaju.png',
-    name: "POS Laju",
-    type: "standard",
-    expectArrive: 5,
-    cost: 7.00,
-  },
-  {
     image: '/images/j&t.png',
     name: "J&T Express",
     type: "express",
