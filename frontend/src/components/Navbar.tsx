@@ -1,20 +1,18 @@
 import React, { FC, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector, RootStateOrAny } from "react-redux";
 import logo from "../assets/logo.png";
+import { useCart } from "../hooks/useCart";
 import { useLocation } from "react-router-dom";
 
 export const Navbar: FC = (props) => {
   
-  const [orderItem, setOrderItem] = useState()
+  const [cart] = useCart()
   
   const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
   const { userInfo } = userDetail;
 
   const location = useLocation();
-  
-  const cartDetail = useSelector((state: RootStateOrAny) => state.cartReducer);
-  const { cart } = cartDetail;
 
   const orderDetail = useSelector(
     (state: RootStateOrAny) => state.orderReducers

@@ -5,23 +5,23 @@ import star from "../assets/star.png";
 import { Spinner } from "../components/Spinner/Spinner";
 import { useNavigate, useParams } from "react-router-dom";
 import { addToCart } from "../services/cart/cartAction";
+import { useCart } from '../hooks/useCart';
 
 type Props = {};
 
 const Product = (props: Props) => {
   
   const [quantity, setQuantity] = useState<number>(1);
+  const [userCart, setUserCart] = useCart()
 
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
   const productByIdList = useSelector((state: RootStateOrAny) => state.productDetailReducers);
-  const cartDetail = useSelector((state: RootStateOrAny) => state.cartReducer);
-  const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
 
+  const userDetail = useSelector((state: RootStateOrAny) => state.loginReducer);
   const { productById } = productByIdList;
-  const { cart } = cartDetail;
   const { userInfo } = userDetail;
   
   let optionValue: any = [];
@@ -46,22 +46,18 @@ const Product = (props: Props) => {
   const addItemHandler = () => {
     
     if (!userInfo) navigate('/login')
-
-    const item = cart.findIndex((item: any) => item.id === productById.id);
+    const item = userCart.findIndex((item: any) => item.id === productById.id);
     console.log(item);
 
     if (item >= 0) {
-      cart[item].quantity += quantity;
-      dispatch(addToCart(cart));
+      userCart[item].quantity += quantity;
+      dispatch(addToCart(userCart));
     } else {
       const cartItem = { ...productById, quantity: quantity };
-      console.log(cartItem);
-      cart.push(cartItem);
-      dispatch(addToCart(cart));
+      userCart.push(cartItem)
+      dispatch(addToCart(userCart));
       }
   }
-
-
 
   return productById.length !== 0 ? (
     <div className="grid grid-cols-2 max-w-7xl m-auto px-10 gap-20 py-10">
@@ -93,7 +89,7 @@ const Product = (props: Props) => {
           <p>Quantity</p>
 
           <select className="w-[60px] border-gray-500 border-[1.5px] rounded-md px-2 focus:outline-none" onChange={(e) => quantityHandler(e)}>
-            {optionValue.map((item:any) => <option value={item}>{item}</option>)}
+            {optionValue.map((item:any, index:number) => <option key={index} value={item}>{item}</option>)}
           </select>
         </section>
 
