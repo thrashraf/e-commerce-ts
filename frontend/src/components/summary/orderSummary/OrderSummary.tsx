@@ -37,9 +37,9 @@ export const OrderSummary = (props: Props) => {
         <section className=" overflow-y-auto h-[280px]">
           
             {props.order.length > 0 ? (
-              props.order.map((item) => {
+              props.order.map((item, index) => {
                 return (
-                <div className="flex bg-gray-50 p-3 rounded-lg mb-3">
+                <div className="flex bg-gray-50 p-3 rounded-lg mb-3" key={index}>
                     <img src={item.image} alt={item.name} className='object-cover h-[70px] w-[70px] rounded-lg'/>
                     <section className="text-xs ml-5 flex flex-col justify-around">
                         <p>{item.name.length > 30 ? `${item.name.slice(0, 30)}...` : item.name}</p>
