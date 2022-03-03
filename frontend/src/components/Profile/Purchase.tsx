@@ -1,7 +1,6 @@
-<<<<<<< HEAD
-=======
+
 import React, { useEffect } from 'react'
->>>>>>> 86f2bf7fcc7a49a5b9916f42602a6bc8b6a5eef1
+
 import { useState } from 'react'
 import { useAllOrder } from '../../hooks/useAllOrder';
 
@@ -28,10 +27,6 @@ export const Purchase = (props: Props) => {
 
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 86f2bf7fcc7a49a5b9916f42602a6bc8b6a5eef1
   return (
     <div className='pl-10'>
         <div className='flex items-center pt-5'>
@@ -72,11 +67,7 @@ export const Purchase = (props: Props) => {
             ) : (
                 <img src="/images/empty-cart.png" alt="" className='object-contain w-[40%] m-auto mt-20'/>
             ) }
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 86f2bf7fcc7a49a5b9916f42602a6bc8b6a5eef1
         </div>
     </div>
   )

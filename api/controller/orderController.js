@@ -77,9 +77,6 @@ export const getAllOrder = async (req, res) => {
       });
     const [allOrder] = await orderQuery.getAllOrder(id);
 
-<<<<<<< HEAD
-    res.status(200).json(allOrder);
-=======
     //this to flat array of object from order = [orderItem:[object], orderItem:[object]]
     //into order = [{order...}, {order...}]
     const order = allOrder.reduce(
@@ -87,7 +84,6 @@ export const getAllOrder = async (req, res) => {
       []
     );
     res.status(200).json(order);
->>>>>>> 86f2bf7fcc7a49a5b9916f42602a6bc8b6a5eef1
 
   } catch (error) {
     res.status(400).json(error);
