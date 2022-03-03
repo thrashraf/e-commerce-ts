@@ -6,6 +6,7 @@ import Card from '../components/Card';
 import { Spinner } from '../components/Spinner/Spinner';
 import { getCartItem } from '../services/cart/cartAction';
 
+
 type Props = {};
 
 export const Home = (props: Props) => {
@@ -18,6 +19,7 @@ export const Home = (props: Props) => {
     dispatch(getCartItem())
     dispatch(listProducts())
     dispatch(resetProductDetail())
+    
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
