@@ -38,11 +38,6 @@ class orderQuery {
         const sql = `SELECT * FROM orders where orderID = '${id}'`;
         return db.execute(sql);
     }
-
-    static async getAllOrder(id) {
-        const sql = `SELECT orderItem FROM orders where userID = '${id}' AND isPaid = '0'`;
-        return db.execute(sql);
-    }
 }
 
 

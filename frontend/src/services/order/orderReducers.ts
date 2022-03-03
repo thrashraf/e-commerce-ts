@@ -1,6 +1,6 @@
 import { OrderConstant } from "../../constant/orderConstant"
 
-export const orderReducers = (state = {order: [], success:false, loading: false, id: null, allOrder: []}, action:any) => {
+export const orderReducers = (state = {order: [], success:false, loading: false, id: null}, action:any) => {
 
     switch (action.type) {
 
@@ -34,11 +34,6 @@ export const orderReducers = (state = {order: [], success:false, loading: false,
                 loading: false, 
                 success: false, 
                 order: action.payload
-            }
-
-        case OrderConstant.GET_ALL_USER_ORDER:
-            return { 
-                allOrder: action.payload
             }
 
         case OrderConstant.FAIL:
