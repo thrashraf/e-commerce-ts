@@ -35,7 +35,6 @@ export const createOrder = async (req, res, next) => {
 }
 
 export const getOrder = async (req, res, next) => {
-<<<<<<< HEAD
   try {
     //current order id
     const id = req.params.id;
@@ -86,32 +85,7 @@ export const getAllOrder = async (req, res) => {
   }
 };
  
-=======
-
-    try {
-
-        const id = req.params.id
-        const [orderDetail] = await orderQuery.getOrder(id)
-
-        if (!orderDetail[0]) return res.status(400).json({
-            message: 'error lol'
-        })
-
-        res.status(200).json({
-            id: orderDetail[0].id,
-            orderItem: orderDetail[0].orderItem,
-            isPaid: orderDetail[0].isPaid,
-            isDelivered: orderDetail[0].isDelivered,
-            fullName: orderDetail[0].fullName,
-            phoneNumber: orderDetail[0].phoneNumber,
-            address: orderDetail[0].address,
-            totalPrice: orderDetail[0].totalPrice
-        })
-
-    } catch (error) {
-        console.log(error)
-    }
 
 
-}
->>>>>>> parent of 0ec436ac (fix array)
+
+

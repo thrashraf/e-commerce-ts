@@ -1,11 +1,7 @@
-<<<<<<< HEAD
 
 import React, { useEffect } from 'react'
-
-=======
-import React from 'react'
->>>>>>> parent of 0ec436ac (fix array)
 import { useState } from 'react'
+import { useCart } from '../../hooks/useCart';
 
 type Props = {}
 
@@ -28,10 +24,8 @@ export const Purchase = (props: Props) => {
 
     }
 
-<<<<<<< HEAD
-=======
+    const allOrder = useCart()
 
->>>>>>> parent of 0ec436ac (fix array)
   return (
     <div className='pl-10'>
         <div className='flex items-center pt-5'>
@@ -68,9 +62,9 @@ export const Purchase = (props: Props) => {
         </div>
 
         <div className='w-full'>
-<<<<<<< HEAD
+
             {/* map the order item */}
-            {currentTab === 0 ? (
+            {/* {currentTab === 0 ? (
                 allOrder?.filter((order: any) => {
                     return !order.isPaid
                 }).map((order: any) => {
@@ -80,11 +74,11 @@ export const Purchase = (props: Props) => {
                 })
             ) : (
                 <img src="/images/empty-cart.png" alt="" className='object-contain w-[40%] m-auto mt-20'/>
-            ) }
+            ) } */}
 
-=======
+
             <img src="/images/empty-cart.png" alt="" className='object-contain w-[40%] m-auto mt-20'/>
->>>>>>> parent of 0ec436ac (fix array)
+
         </div>
     </div>
   )
