@@ -62,23 +62,18 @@ export const getOrder = async (req, res, next) => {
 
 export const getAllOrder = async (req, res) => {
   const token = req.cookies.token;
-  //console.log(req.cookies.token);
   const id = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-    console.log(id)
+
   try {
+
     if (!id)
       return res.status(401).json({
-        message: "lol u screwed up",
+        message: "please login first",
       });
+    
     const [allOrder] = await orderQuery.getAllOrder(id);
-
-    //this to flat array of object from order = [orderItem:[object], orderItem:[object]]
-    //into order = [{order...}, {order...}]
-    const order = allOrder.reduce(
-      (order, obj) => order.concat(obj.orderItem),
-      []
-    );
-    res.status(200).json(order);
+    console.log(allOrder)
+    res.status(200).json(allOrder);
 
   } catch (error) {
     res.status(400).json(error);

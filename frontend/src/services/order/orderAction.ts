@@ -54,13 +54,13 @@ export const getOrderDetails = (id: string) => async (dispatch: any) => {
 };
 
 export const getAllOrder = () => async (dispatch: any) => {
-  
+
   const requestOrder: any = await axios.get(
     `http://localhost:5000/api/order/getAllOrder`,
     { withCredentials: true }
   )
 
-  console.log(requestOrder)
+  console.log(requestOrder.data)
 
   dispatch({
     type: OrderConstant.GET_ALL_ORDER,

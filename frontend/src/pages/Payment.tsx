@@ -71,7 +71,7 @@ export const Payment = (props: Props) => {
         },
         return_url: `${window.location.origin}/fpx?return=true`,
       })
-      .then((result) => {
+      .then((result: any) => {
         console.log(result.paymentIntent);
       });
   };
