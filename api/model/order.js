@@ -43,6 +43,13 @@ class orderQuery {
         const sql = `SELECT * FROM orders where userID = '${id}'`;
         return db.execute(sql);
     }
+
+    static async successPayment(orderID) {
+        const sql = `UPDATE orders
+        SET isPaid = '1'
+        WHERE orderID = '${orderID}'`;
+        return db.execute(sql);
+    }
 }
 
 

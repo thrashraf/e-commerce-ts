@@ -1,25 +1,33 @@
-import { useStripe } from '@stripe/react-stripe-js'
+import { useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Spinner } from '../components/Spinner/Spinner';
+import { successPayment } from '../services/order/orderAction'
 
 type Props = {}
 
 export const PaymentUpdate = (props: Props) => {
 
-const stripe = useStripe()
-const query = new URLSearchParams(useLocation().search)
+const stripe = useStripe();
+const dispatch = useDispatch();
+const query = new URLSearchParams(useLocation().search);
 const clientSecret = query.get('payment_intent_client_secret');
+const id = query.get('id')
 const [paymentStatus, setPaymentStatus] = useState<string>('')
 const navigate = useNavigate()
 
 useEffect(() => {
  if (stripe && clientSecret) {
      stripe?.retrievePaymentIntent(clientSecret).then(({paymentIntent}) => {
-        paymentIntent?.status && setPaymentStatus(paymentIntent?.status)
+        if (paymentIntent?.status && id) {
+          setPaymentStatus(paymentIntent?.status)
+          dispatch(successPayment(id))
+        }
      })
  }
 
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [clientSecret, stripe])
 
   return (

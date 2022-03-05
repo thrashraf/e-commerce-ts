@@ -16,9 +16,9 @@ type Props = {};
 export const Payment = (props: Props) => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
-  //const navigate = useNavigate();
   const query = new URLSearchParams(useLocation().search);
 
   const orderDetail = useSelector(
@@ -54,27 +54,26 @@ export const Payment = (props: Props) => {
         { withCredentials: true }
       )
       .then((res) => res.data);
-
+      
     //confirm payment
     await stripe
-      ?.confirmFpxPayment(clientSecret, {
-        payment_method: {
-          fpx: elements?.getElement(FpxBankElement) || { bank: "" },
-          billing_details: {
-            address: {
-              line1: order.address,
-              state: order.state,
-            },
-            name: order.fullName,
-            phone: order.phoneNumber,
-          },
+    ?.confirmFpxPayment(clientSecret, {
+      payment_method: {
+        fpx: elements?.getElement(FpxBankElement) || { bank: "" },
+        billing_details: {
+          name: id,
         },
-        return_url: `${window.location.origin}/fpx?return=true`,
+        metadata: {
+          customer_id: id ? id : ''
+        },
+      },
+      return_url: `${window.location.origin}/fpx?return=true&id=${id}`,
       })
       .then((result: any) => {
-        console.log(result.paymentIntent);
+        console.log('result' + result.paymentIntent);
       });
   };
+
 
   return (
     <div className="max-w-7xl px-10 m-auto justify-center">
@@ -127,6 +126,7 @@ export const Payment = (props: Props) => {
               
               <button
                 type="submit"
+                onClick={() => navigate('/')}
                 className="px-10 py-2 bg-white text-gray-500 rounded-md mt-14 float-right transition-transform transform hover:scale-110 mr-5"
               >
                 Cancel

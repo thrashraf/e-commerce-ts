@@ -68,4 +68,13 @@ export const getAllOrder = () => async (dispatch: any) => {
   });
 };
 
+export const successPayment = (orderID: string) => async (dispatch: any) => {
+
+  await axios.post(
+    `http://localhost:5000/api/order/successPayment`, {orderID},
+    { withCredentials: true }
+  )
+  
+};
+
 

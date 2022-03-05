@@ -65,7 +65,6 @@ export const getAllOrder = async (req, res) => {
   const id = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
 
   try {
-
     if (!id)
       return res.status(401).json({
         message: "please login first",
@@ -79,6 +78,25 @@ export const getAllOrder = async (req, res) => {
     res.status(400).json(error);
   }
 };
+
+
+export const updateSuccessPayment = async(req, res) => {
+  
+  const orderID = req.body.orderID
+  console.log(orderID)
+  try {
+    const [successOrder] = await orderQuery.successPayment(orderID)
+    console.log(successOrder)
+    if (successOrder.changedRows !== 1) return res.status(400).json({
+      message: 'error lol'
+  })
+
+    res.state(200).json({message: 'Success Payment'})
+    
+  } catch (error) {
+    res.status(400).json({message: 'something went wrong...'})
+  }
+}
  
 
 
