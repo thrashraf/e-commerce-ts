@@ -5,6 +5,7 @@ import { resetProductDetail } from '../services/product/productById/productDetai
 import Card from '../components/Card';
 import { Spinner } from '../components/Spinner/Spinner';
 import { getCartItem } from '../services/cart/cartAction';
+import { Carousel } from '../components/Carousel';
 
 type Props = {};
 
@@ -23,17 +24,23 @@ export const Home = (props: Props) => {
   
   //console.log(products);
 
-  return <div className=' max-w-7xl px-10 m-auto'>
+  return <div className='max-w-7xl px-10 m-auto pb-10 pt-5'>
     
-      {/* carousel */}
       {/* Search */}
     
-    <div>
+     
+    <div className=''>
       {loading
        ? <Spinner /> 
        : error 
        ? <h1>{error}</h1>
-       :<Card data={products}/> 
+       :
+       (
+         <>
+         <Carousel />
+         <Card data={products} />
+         </>
+       )
       }
     </div>
   </div>;

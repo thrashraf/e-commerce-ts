@@ -19,7 +19,7 @@ export const Payment = (props: Props) => {
   const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
-  const query = new URLSearchParams(useLocation().search);
+  const query = new URLSearchParams(useLocation().search); 
 
   const orderDetail = useSelector(
     (state: RootStateOrAny) => state.orderReducers

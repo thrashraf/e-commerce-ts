@@ -59,11 +59,11 @@ export const OrderSummary = (props: Props) => {
                 className=" w-[70%] m-auto mt-10"
               />
             )}
-        </section>
+        </section> 
         
           <section className={`${props.isVisible ? 'hidden' : 'flex'} w-full absolute bottom-0 py-2 px-5 justify-between bg-blue-500 rounded-xl my-5 cursor-pointer hover:bg-blue-300 text-white`} onClick={checkoutHandler}>
             <span>
-              ${props.order.length <= 0 ? "0.00" : calculateTotalPrice()}
+              RM {props.order.length <= 0 ? "0.00" : calculateTotalPrice()}
             </span>
             <p>
               checkout <i className="fa-solid fa-arrow-right-long ml-3"></i>
