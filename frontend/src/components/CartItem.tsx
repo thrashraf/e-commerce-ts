@@ -68,7 +68,7 @@ export const CartItem = (props: Props) => {
         </section>
         
         <section className="flex justify-items-center items-center">
-          <span className="">${(props.price * props.quantity).toFixed(2)}</span>
+          <span className="">RM {(props.price * props.quantity).toFixed(2)}</span>
         </section>
       </div>
   );

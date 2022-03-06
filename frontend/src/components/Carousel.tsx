@@ -42,9 +42,9 @@ export const Carousel = () => {
         <img src={carouselImage[count]} alt="" className='object-cover rounded-lg h-[450px] w-full' />
 
         <div className="absolute top-0 bottom-0 w-full flex justify-between items-start px-5 ">
-          <button onClick={carouselPreviousHandler} className='focus:outline-none'><span className='text-white text-xl'><i className=" fa-solid fa-less-than fa-2xl"></i></span></button>
+          <button onClick={carouselPreviousHandler} className='focus:outline-none'><span className='text-white text-xl'><i className=" fa-solid fa-less-than fa-lg"></i></span></button>
           
-          <button onClick={carouselNextHandler} className='focus:outline-none'><span className='text-white text-xl'><i className="fa-solid fa-greater-than fa-2xl"></i></span></button>
+          <button onClick={carouselNextHandler} className='focus:outline-none'><span className='text-white text-xl'><i className="fa-solid fa-greater-than fa-lg"></i></span></button>
         </div>
       </div>
     </div>

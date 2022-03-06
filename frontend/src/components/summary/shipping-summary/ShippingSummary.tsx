@@ -55,7 +55,7 @@ export const ShippingSummary = (props: Props) => {
         })}
 
         <section className="flex w-full absolute bottom-0 py-2 px-5 justify-between bg-blue-500 rounded-xl my-5 cursor-pointer hover:bg-blue-300 text-white" onClick={props.placeOrder}>
-          ${props.totalPrice}
+          RM {props.totalPrice}
           <p>
             Confirm <i className="fa-solid fa-arrow-right-long ml-3"></i>
           </p>

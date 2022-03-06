@@ -34,6 +34,7 @@ const Product = (props: Props) => {
 
   useEffect(() => {
     dispatch(listProductById(id));
+    window.scrollTo(0, 0)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
   
@@ -83,7 +84,7 @@ const Product = (props: Props) => {
           </aside>
         </section>
 
-        <h3 className="text-3xl font-medium my-10">${productById.price}</h3>
+        <h3 className="text-3xl font-medium my-10">RM {productById.price}</h3>
 
         <section className="w-[200px] flex justify-between mb-10">
           <p>Quantity</p>

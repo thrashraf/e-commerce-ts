@@ -47,7 +47,7 @@ export const OrderSummary = (props: Props) => {
                         <p>variation</p>
                         <p>0{item.quantity}</p>
                         </section>
-                        <p className="font-medium">${(item.price * item.quantity).toFixed(2)}</p>
+                        <p className="font-medium">RM {(item.price * item.quantity).toFixed(2)}</p>
                     </section>
                 </div>
                 );
