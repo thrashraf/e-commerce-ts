@@ -12,7 +12,7 @@ type Props = {};
 const Product = (props: Props) => {
   
   const [quantity, setQuantity] = useState<number>(1);
-  const [userCart, setUserCart] = useCart()
+  const [userCart] = useCart()
 
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -47,11 +47,11 @@ const Product = (props: Props) => {
   const addItemHandler = () => {
     
     if (!userInfo) navigate('/login')
-    const item = userCart.findIndex((item: any) => item.id === productById.id);
+    const item = userCart?.findIndex((item: any) => item.id === productById.id);
     console.log(item);
 
     if (item >= 0) {
-      userCart[item].quantity += quantity;
+      userCart[item].quantity += quantity
       dispatch(addToCart(userCart));
     } else {
       const cartItem = { ...productById, quantity: quantity };

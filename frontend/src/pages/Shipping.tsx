@@ -117,7 +117,7 @@ export const Shipping = (props: Props) => {
             onChange={(e) => selectOptionHandler(e)}
           >
             <option value={""}>Default</option>
-            {userInfo && userInfo.address.length > 0 ? (
+            {userInfo && userInfo.address ? (
               userInfo.address.map((item: any, index: number) => {
                 return (
                   <option key={index} value={index}>{`Address ${

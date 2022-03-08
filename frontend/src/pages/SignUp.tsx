@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import { signupUser } from '../services/auth/signup/signupActions';
-import signupImage from '../assets/signup.jpg'
+import signupImage from '../assets/signup.jpg';
+import toast, { Toaster } from 'react-hot-toast';
 
 type Props = {};
 
@@ -13,6 +14,18 @@ export const SignUp = (props: Props) => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
 
+  const signUpDetail = useSelector((state: RootStateOrAny) => state.signupReducers);
+  const { loading } = signUpDetail;
+
+  useEffect(() => {
+
+    if (!loading) {
+      console.log(loading);
+      toast.success('Successful Sign Up 🎉')
+    }
+
+  }, [loading])
+
   const dispatch = useDispatch();
 
   const signup = () => {
@@ -22,6 +35,8 @@ export const SignUp = (props: Props) => {
   return <div className='grid grid-cols-2 h-screen'>
       
       <section className='flex flex-col justify-center px-[15%]'>
+
+        <Toaster />
         
         <h1 className=' text-3xl font-semibold'>Sign Up.</h1>
         <h1 className='text-gray-400 mt-2'>Get In Touch With Us</h1>

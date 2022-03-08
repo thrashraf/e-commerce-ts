@@ -22,7 +22,7 @@ function PurchaseItem(props: Props) {
           <p>Quantity: {props.item.quantity}</p>
         </section>
         <p className="font-medium">
-          ${(props.item.price * props.item.quantity).toFixed(2)}
+          RM {(props.item.price * props.item.quantity).toFixed(2)}
         </p>
       </section>
 

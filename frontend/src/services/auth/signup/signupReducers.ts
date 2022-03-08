@@ -1,6 +1,6 @@
 import { signup } from "../../../constant/signupConstant"
 
-export const signupReducers = (state = {userInfo: []}, action:any) => {
+export const signupReducers = (state = {userInfo: [], loading: true}, action:any) => {
 
     switch (action.type) {
         case signup.REQUEST_SIGNUP:

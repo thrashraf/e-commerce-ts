@@ -48,7 +48,7 @@ export const ShippingSummary = (props: Props) => {
                     new Date().getDate() + company.expectArrive
                   }`}</p>
                 </section>
-                <p className="font-medium">${company.cost}</p>
+                <p className="font-medium">RM{company.cost}</p>
               </section>
             </div>
           );
