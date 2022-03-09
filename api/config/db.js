@@ -10,15 +10,5 @@ const pool = mysql.createConnection({
     password: process.env.DB_PASSWORD,
 })
 
-// const sql = 'SELECT * FROM products'; n
-
-// pool.execute(sql, (err, result) => {
-
-//     if (err) throw err;
-
-//     console.log(result);
-
-// });
-
 export default pool.promise()
 

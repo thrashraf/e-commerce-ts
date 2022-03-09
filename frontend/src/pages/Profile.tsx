@@ -4,8 +4,9 @@ import { Spinner } from '../components/Spinner/Spinner'
 import { Information } from '../components/Profile/Information';
 import { PersonalSideBar } from '../components/PersonalSideBar';
 import { Address } from '../components/Profile/Address/Address';
-import { Setting } from '../components/Profile/Setting';
+import { Privacy } from '../components/Profile/Privacy';
 import { Purchase } from '../components/Profile/Purchase';
+import { Settings } from '../components/Profile/Settings';
 
 type Props = {};
 
@@ -50,7 +51,11 @@ export const Profile = (props: Props) => {
         </section>
 
         <section className='w-full' style={isSectionActive(4)}>
-          <Setting />
+          <Privacy />
+        </section>
+
+        <section className='w-full' style={isSectionActive(5)}>
+          <Settings />
         </section>
 
       </div>

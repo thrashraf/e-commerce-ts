@@ -4,7 +4,6 @@ export const config = async (req, res) => {
     res.json({publishableKey: process.env.STRIPE_PUBLISHABLE_KEY})
 }
 
-
 export const paymentIntent = async (req, res) => {
 
     const amount = Math.round(req.body.amount * 100)

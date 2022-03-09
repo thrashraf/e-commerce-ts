@@ -87,6 +87,15 @@ export const loginUser = async (req, res) => {
 
 }
 
+export const logout = async (req, res) => {
+    try {
+        res.clearCookie('token');
+        res.status(200).send({redirect: '/'})
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 
 
 export const updateUserInformation = async (req, res) => {

@@ -7,7 +7,6 @@ dotenv.config()
 export const getCartItem = async (req, res, next) => {
 
     try {
-        
         const token = req.cookies.token
         console.log(req.cookies.token);
         const id = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)

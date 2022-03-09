@@ -21,3 +21,18 @@ export const loginUser = (email: string, password: string) => async (dispatch: a
         })
     }
 }
+
+export const logout = () => async(dispatch: any) => {
+    try {
+        await axios.get("http://localhost:5000/api/logout", {withCredentials: true})
+        dispatch({
+            type: loginConstant.LOGOUT,
+            payload: null
+        })
+    } catch (error: any) {
+        dispatch({
+            type: loginConstant.FAIL_LOGIN,
+            payload: error.response.data.message
+        })       
+    }
+}
